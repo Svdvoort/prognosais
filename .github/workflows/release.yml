@@ -1,0 +1,60 @@
+name: Release
+
+on:
+  push:
+    tags:
+    - '*.*.*'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get tag
+        id: tag
+        run: |
+          echo ::set-output name=tag::${GITHUB_REF#refs/tags/}
+
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.7"
+
+      - name: Install poetry
+        shell: bash
+        run: |
+          curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+          echo "::set-env name=PATH::$HOME/.poetry/bin:$PATH"
+
+      - name: Install dependencies
+        shell: bash
+        run:  |
+          poetry install --no-dev
+
+      - name: Build packages
+        shell: bash
+        run: poetry build
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          release_name: Release ${{ steps.tag.outputs.tag }}
+          draft: false
+          prerelease: false
+
+
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: dist/PrognosAIs-${{ steps.tag.outputs.tag }}-py3-none-any.whl
+          asset_name: prognosais_${{ steps.tag.outputs.tag }}.whl
+          asset_content_type: application/octet-stream

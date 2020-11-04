@@ -1,0 +1,77 @@
+name: Python test
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  Testing:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.7.x]
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+        architecture: x64
+
+    - name: Get full python version
+      id: full-python-version
+      shell: bash
+      run: echo ::set-output name=version::$(python -c "import sys; print('-'.join(str(v) for v in sys.version_info))")
+
+    - name: Install poetry
+      shell: bash
+      run: |
+        curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+        echo "::set-env name=PATH::$HOME/.poetry/bin:$PATH"
+
+    - name: Configure poetry
+      shell: bash
+      run: poetry config virtualenvs.in-project true
+
+    - name: Set up cache
+      uses: actions/cache@v1
+      id: cache
+      with:
+        path: .venv
+        key: venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
+
+
+    - name: Make sure we have the latest pip
+      shell: bash
+      run: poetry run pip install --upgrade pip
+
+    - name: Ensure cache is healthy
+      if: steps.cache.outputs.cache-hit == 'true'
+      shell: bash
+      run: poetry run pip --version >/dev/null 2>&1 || rm -rf .venv
+
+    - name: Install dependencies
+      shell: bash
+      run: poetry install
+
+    - name: Lint with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        poetry run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings.
+        poetry run flake8 . --count --exit-zero --statistics
+
+    - name: Perform unit tests and generate coverage report
+      run: poetry run pytest -vv -n0 --xdoc --cov PrognosAIs --cov-report=xml --cov-context=test
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      if: matrix.python-version == '3.7.x' && startsWith(runner.os, 'Linux')
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ./coverage.xml
+        flags: unittests
+        fail_ci_if_error: false

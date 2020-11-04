@@ -1,0 +1,160 @@
+preprocessing:
+  multi_dimension_extracting:
+    # Either first or all
+    extraction_type: first
+    # Number of dimensions image should be
+    max_number_of_dimensions: 3
+  masking:
+    mask_file: tests/test_data/Nifti_Data/ATLAS/atlas_mask.nii.gz
+    mask_background: True
+    background_value: 0
+    crop_to_mask: True
+    process_masks: True
+  resampling:
+    resample_size: [55, 55, 55]
+  normalizing:
+    # Normalization type can be either  'image' or 'patch', in the first case the full image is normalized
+    # In the second case normalization is done per patch
+    type: image
+    # What method of normalization, either 'range' or 'zscore'
+    normalization_method: range
+    # Upper and lower percentiles
+    normalization_range: [2, 98]
+    # Masks can be normalized either "consecutively" (i.e. 0, 1, 2, 3) or "collapse" (all foreground labels will be 1)
+    mask_normalization: consecutively
+  bias_field_correcting:
+    # TUrn back on
+    # # patch or image
+    type: image
+  patching:
+    patch_size: [20, 20, 20]
+    # Pad if the patch size is smaller than the image size?
+    pad_if_needed: True
+    pad_constant: 0.0
+    # Patch extraction type can be either 'random', 'fitting' or 'overlap'
+    # 'random' will randomly extract patches (requires max patches to be set)
+    # 'fitting' will extract as many patches as possible without overlap (patches will be spaced out as much as possible)
+    # 'oversample' is the same as 'fitting' when max_number_of_patches < possible number of patches
+    # when max_number_of_patches > possible_patches, it will ensure that max_number_of_patches are drawn, minimizing overlap
+    extraction_type: overlap
+    # Set to -1 to get as many patches as possible
+    # Otherwise we will try to get this number of patches
+    max_number_of_patches: -1
+    # Overlap factor in case we use overlap extraction
+    # Float between 0 and 1 (non-inclusive); the fraction of overlap between patches
+    overlap_fraction: 0.5
+  rejecting:
+    # Fraction of voxels from mask that should be non-zero
+    rejection_limit: 0.005
+    type: patch
+  saving:
+    use_mask_as_channel: False
+    mask_channels: 2
+    type: image
+  labeling:
+    label_file: tests/test_data/Nifti_Data/label_data.csv
+    train_fraction: 0.6
+    validation_fraction: 0.4
+    test_fraction: 0
+    make_one_hot: True
+    filter_missing: False
+  general:
+    mask_keyword: "MASK"
+    sample_type: "nifti"
+    max_cpus: 1
+
+general:
+  output_folder: tests/output/
+  input_folder: tests/test_data/Nifti_Data/SAMPLES/
+  cluster_type: SLURM
+  custom_definitions_file: MyDefinitions.py
+
+training:
+  copy_files: False
+  data_augmentation: False
+  augmentation_factor: 5
+  max_steps_per_epoch: -1
+  use_class_weights: False
+  use_class_weights_in_losses: False
+  shuffle: False
+  cache_in_memory: False
+  # One of "AUTO", "mixed", "float16", or "False"
+  # defaults to AUTO
+  float_policy: AUTO
+  # if float_policy used float16, will use this epsilon
+  # defaults to 1e-4
+  float16_epsilon: 1e-4
+
+evaluation:
+  convert_one_hot: True
+  combine_patch_predictions: True
+  combination_type: vote
+  # Here we put names of outputs that we want to write to nifti
+  # Instead of to file
+  image_outputs: AUTO
+  # Can specificy metrics here, same ways as for the model
+  # If no metrics are specified we will use the same ones as
+  # Used for the model during training
+  metrics:
+    name: CategoricalAccuracy
+    is_custom: False
+    settings:
+
+model:
+  architecture:
+    batch_size: 1
+    N_epoch: 2
+    dtype: float32
+    N_output: -1
+    model_name: TestNet
+
+  optimizer:
+    name: Adam
+    is_custom: False
+    settings:
+
+  losses:
+    name: CategoricalCrossentropy
+    is_custom: False
+    settings:
+  metrics:
+  callbacks:
+    early_stopping:
+      name: "EarlyStopping"
+      is_custom: False
+      settings:
+        monitor: "val_loss"
+        patience: 10
+        verbose: 1
+    nan_terminator:
+      name: "TerminateOnNaN"
+      is_custom: False
+      settings:
+    lr_reduction:
+      name: "ReduceLROnPlateau"
+      is_custom: False
+      settings:
+        monitor: "val_loss"
+        factor: 0.5
+        patience: 5
+        # This gives an error because it is loaded as a string!
+        min_lr: 1e-7
+    csv_logger:
+      name: "CSVLogger"
+      is_custom: False
+      settings:
+        filename: "log.csv"
+
+    model_checkpoint:
+      name: "ModelCheckpoint"
+      is_custom: False
+      settings:
+        filepath: "ModelCheckpoint"
+        monitor: "val_loss"
+        verbose: 1
+        save_weights_only: True
+        save_best_only: True
+    timer:
+      name: "Timer"
+      is_custom: True
+      settings:

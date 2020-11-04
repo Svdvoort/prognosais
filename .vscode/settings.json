@@ -1,0 +1,18 @@
+{
+  "editor.formatOnPaste": false,
+  "python.envFile": "${workspaceFolder}/.env",
+  "python.formatting.provider": "black",
+  "python.linting.banditEnabled": true,
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.mypyEnabled": true,
+  "python.poetryPath": "/home/sebastian/.poetry/bin/poetry",
+  "python.testing.nosetestsEnabled": false,
+  "python.testing.pytestArgs": [
+    "tests/",
+    "-n4",
+    "--no-cov"
+  ],
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false
+}
