@@ -15,7 +15,9 @@ import sys
 
 
 sys.path.insert(0, os.path.abspath("../.."))
-sys.setrecursionlimit(1500)
+sys.path.insert(0, os.path.abspath('../source'))
+sys.path.append(os.path.abspath('..'))
+# sys.setrecursionlimit(1500)
 
 
 # -- Project information -----------------------------------------------------
