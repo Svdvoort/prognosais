@@ -5,34 +5,30 @@ Subpackages
 -----------
 
 .. toctree::
+   :maxdepth: 4
 
-   PrognosAIs.CNN_model
-   PrognosAIs.Cluster
-   PrognosAIs.Cluster_jobs
    PrognosAIs.IO
    PrognosAIs.Model
-   PrognosAIs.Postprocessing
    PrognosAIs.Preprocessing
 
 Submodules
 ----------
 
-PrognosAIs.predict\_from\_network module
-----------------------------------------
+PrognosAIs.Constants module
+---------------------------
 
-.. automodule:: PrognosAIs.predict_from_network
+.. automodule:: PrognosAIs.Constants
    :members:
    :undoc-members:
    :show-inheritance:
 
-PrognosAIs.train\_network module
---------------------------------
+PrognosAIs.Pipeline module
+--------------------------
 
-.. automodule:: PrognosAIs.train_network
+.. automodule:: PrognosAIs.Pipeline
    :members:
    :undoc-members:
    :show-inheritance:
-
 
 Module contents
 ---------------

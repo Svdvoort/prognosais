@@ -4,18 +4,18 @@ PrognosAIs.IO package
 Submodules
 ----------
 
-PrognosAIs.IO.ArgParser module
-------------------------------
-
-.. automodule:: PrognosAIs.IO.ArgParser
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 PrognosAIs.IO.ConfigLoader module
 ---------------------------------
 
 .. automodule:: PrognosAIs.IO.ConfigLoader
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+PrognosAIs.IO.Configs module
+----------------------------
+
+.. automodule:: PrognosAIs.IO.Configs
    :members:
    :undoc-members:
    :show-inheritance:
@@ -36,22 +36,6 @@ PrognosAIs.IO.LabelParser module
    :undoc-members:
    :show-inheritance:
 
-PrognosAIs.IO.NPZ\_to\_tf module
---------------------------------
-
-.. automodule:: PrognosAIs.IO.NPZ_to_tf
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-PrognosAIs.IO.SysArgParser module
----------------------------------
-
-.. automodule:: PrognosAIs.IO.SysArgParser
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 PrognosAIs.IO.utils module
 --------------------------
 
@@ -59,7 +43,6 @@ PrognosAIs.IO.utils module
    :members:
    :undoc-members:
    :show-inheritance:
-
 
 Module contents
 ---------------

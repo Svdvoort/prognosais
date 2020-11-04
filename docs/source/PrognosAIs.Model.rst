@@ -12,6 +12,14 @@ PrognosAIs.Model.Callbacks module
    :undoc-members:
    :show-inheritance:
 
+PrognosAIs.Model.Evaluators module
+----------------------------------
+
+.. automodule:: PrognosAIs.Model.Evaluators
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 PrognosAIs.Model.Losses module
 ------------------------------
 
@@ -36,14 +44,13 @@ PrognosAIs.Model.Parsers module
    :undoc-members:
    :show-inheritance:
 
-PrognosAIs.Model.utils module
------------------------------
+PrognosAIs.Model.Trainer module
+-------------------------------
 
-.. automodule:: PrognosAIs.Model.utils
+.. automodule:: PrognosAIs.Model.Trainer
    :members:
    :undoc-members:
    :show-inheritance:
-
 
 Module contents
 ---------------
