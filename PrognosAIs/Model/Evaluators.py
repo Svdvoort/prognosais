@@ -761,10 +761,12 @@ class Evaluator:
                 out_file = os.path.join(
                     self.output_folder, i_dataset_name + "_predictions_combined_patches.csv"
                 )
+
+                _, sample_labels = self.get_sample_labels_from_patch_labels()
                 results_df = self.make_dataframe(
                     sample_names,
                     sample_predictions[i_dataset_name],
-                    self.get_real_labels_of_sample_subset(i_dataset_name),
+                    sample_labels[i_dataset_name],
                 )
                 results_df.to_csv(out_file, index=False)
 
