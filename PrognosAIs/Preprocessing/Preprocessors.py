@@ -592,7 +592,7 @@ class SingleSamplePreprocessor:
         patch_indice_numbers = np.asarray(list(itertools.product(*per_dim_patch_indice_number)))
         # Spacing is determined by the patch size, and the possible missed voxels
         # because patches dont fit perfectly
-        between_patch_spacing = patch_size + np.floor(np.mod(sample_size, patch_size)/patches_per_dim)
+        between_patch_spacing = patch_size + np.mod(sample_size, patch_size)/(patches_per_dim -1)
         patch_indices = patch_indice_numbers * between_patch_spacing
         patch_indices = np.floor(patch_indices).astype(np.int)
         return patch_indices

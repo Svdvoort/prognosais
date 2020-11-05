@@ -9,8 +9,7 @@
   "python.poetryPath": "/home/sebastian/.poetry/bin/poetry",
   "python.testing.nosetestsEnabled": false,
   "python.testing.pytestArgs": [
-    "tests/",
-    "-n4",
+    "tests",
     "--no-cov"
   ],
   "python.testing.pytestEnabled": true,
