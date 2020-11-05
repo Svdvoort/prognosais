@@ -1,6 +1,3 @@
 coverage:
   status:
     patch: off
-
-fixes:
-  - "/paperspace/::"
