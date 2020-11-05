@@ -17,7 +17,7 @@ from slurmpie import slurmpie
 
 class Pipeline(object):
     def __init__(
-        self, config_file: str, preprocess: bool = True, train: bool = True, evaluate: bool = True
+        self, config_file: str, preprocess: bool = True, train: bool = True, evaluate: bool = True, samples_folder: str = None,
     ):
         self.path = os.path.dirname(os.path.realpath(__file__))
 
@@ -49,10 +49,14 @@ class Pipeline(object):
 
         if "saving" in self.preprocessing_config:
             saving_config = Configs.saving_config(self.preprocessing_config["saving"])
+            print(saving_config)
         else:
             saving_config = Configs.saving_config(None)
 
-        self.samples_folder = os.path.join(self.output_folder, saving_config.out_dir_name)
+        if samples_folder is None:
+            self.samples_folder = os.path.join(self.output_folder, saving_config.out_dir_name)
+        else:
+            self.samples_folder = samples_folder
 
     def start_local_pipeline(self):
 
