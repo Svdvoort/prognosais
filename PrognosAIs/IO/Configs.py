@@ -22,20 +22,24 @@ class config:
     @staticmethod
     def get_step_type(config: Union[dict, None]) -> Tuple[bool, bool, dict]:
         if config is not None:
-            step_type = config.pop("type", "image")
-            if step_type == "image":
+            if "type" in config:
+                step_type = config["type"]
+                if step_type == "image":
+                    perform_step_on_image = True
+                    perform_step_on_patch = False
+                elif step_type == "patch":
+                    perform_step_on_image = False
+                    perform_step_on_patch = True
+                elif step_type == "both":
+                    perform_step_on_image = True
+                    perform_step_on_patch = True
+                else:
+                    raise NotImplementedError(
+                        "You have specified an unknown step type {}!".format(step_type)
+                    )
+            else:
                 perform_step_on_image = True
                 perform_step_on_patch = False
-            elif step_type == "patch":
-                perform_step_on_image = False
-                perform_step_on_patch = True
-            elif step_type == "both":
-                perform_step_on_image = True
-                perform_step_on_patch = True
-            else:
-                raise NotImplementedError(
-                    "You have specified an unknown step type {}!".format(step_type)
-                )
         else:
             perform_step_on_image = perform_step_on_patch = False
 
@@ -274,7 +278,6 @@ class saving_config(config):
         self.perform_step = True
         if not self.perform_step_on_image and not self.perform_step_on_patch:
             self.perform_step_on_patch = True
-
 
 class labeling_config(config):
     def __init__(self, config_settings: dict):
