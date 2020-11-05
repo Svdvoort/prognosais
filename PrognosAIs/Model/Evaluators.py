@@ -2,10 +2,10 @@ import argparse
 import os
 import sys
 
+from types import ModuleType
 from typing import Dict
 from typing import Tuple
 from typing import Union
-from types import ModuleType
 
 import numpy as np
 import pandas as pd
@@ -14,13 +14,13 @@ import tensorflow as tf
 
 from tensorflow.keras.models import load_model
 
+import PrognosAIs.Constants
 import PrognosAIs.IO.utils as IO_utils
 import PrognosAIs.Model.Losses
 import PrognosAIs.Model.Parsers as ModelParsers
 
 from PrognosAIs.IO import ConfigLoader
 from PrognosAIs.IO import DataGenerator
-import PrognosAIs.Constants
 
 
 class Evaluator:
