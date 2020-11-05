@@ -58,3 +58,9 @@ jobs:
           asset_path: dist/PrognosAIs-${{ steps.tag.outputs.tag }}-py3-none-any.whl
           asset_name: prognosais_${{ steps.tag.outputs.tag }}.whl
           asset_content_type: application/octet-stream
+
+      - name: Publish package to pypi
+        uses: pypa/gh-action-pypi-publish@v1.4.1
+        with:
+          user: __token__
+          password: ${{ secrets.pypi_password }}
