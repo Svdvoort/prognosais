@@ -25,7 +25,8 @@ jobs:
         shell: bash
         run: |
           curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-          echo "::set-env name=PATH::$HOME/.poetry/bin:$PATH"
+          echo "$HOME/.poetry/bin" >> $GITHUB_PATH
+
 
       - name: Install dependencies
         shell: bash
@@ -55,7 +56,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: dist/PrognosAIs-${{ steps.tag.outputs.tag }}-py3-none-any.whl
+          asset_path: dist/prognosais-${{ steps.tag.outputs.tag }}-py3-none-any.whl
           asset_name: prognosais_${{ steps.tag.outputs.tag }}.whl
           asset_content_type: application/octet-stream
 
