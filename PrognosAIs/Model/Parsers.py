@@ -248,7 +248,7 @@ class MetricParser(StandardParser):
                     i_metric_base_name = i_metric.__class__().name
                     i_metric_label_name = i_metric_name.split(i_metric_base_name)[0]
                     # No output specific metrics, append all metrics to all outputs
-                    if i_metric_label_name == "":
+                    if "_" not in i_metric_label_name:
                         new_metrics[i_label_name].append(i_metric)
                     else:
                         # Need to cut off the last underscore to get the label name
