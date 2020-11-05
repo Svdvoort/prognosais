@@ -75,7 +75,9 @@ class SingleSamplePreprocessor:
             pipeline = self.build_pipeline()
 
         for i_step in pipeline:
-            i_step()
+            success = i_step()
+            if success is False:
+                break
 
     # ===============================================================
     # Image dimension extraction
@@ -504,6 +506,7 @@ class SingleSamplePreprocessor:
                  cannot make patches."""
             )
 
+
         if self.patching_config.extraction_type not in ["random", "fitting", "overlap"]:
             raise NotImplementedError(
                 "The specified extraction type {} is not specified!".format(
@@ -587,10 +590,9 @@ class SingleSamplePreprocessor:
         for i_patches_per_dim in patches_per_dim:
             per_dim_patch_indice_number.append(range(int(i_patches_per_dim)))
         patch_indice_numbers = np.asarray(list(itertools.product(*per_dim_patch_indice_number)))
-
         # Spacing is determined by the patch size, and the possible missed voxels
         # because patches dont fit perfectly
-        between_patch_spacing = patch_size + np.mod(sample_size, patch_size)
+        between_patch_spacing = patch_size + np.floor(np.mod(sample_size, patch_size)/patches_per_dim)
         patch_indices = patch_indice_numbers * between_patch_spacing
         patch_indices = np.floor(patch_indices).astype(np.int)
         return patch_indices
@@ -668,6 +670,8 @@ class SingleSamplePreprocessor:
             self.sample.channels = (self._get_accepted_patches, [rejection_status])
             self.sample.masks = (self._get_accepted_patches, [rejection_status])
 
+            return self.sample.number_of_patches > 0
+
     @staticmethod
     def _get_to_reject_patches(mask: Union[sitk.Image, list], rejection_limit: float) -> list:
         if isinstance(mask, sitk.Image):
@@ -679,6 +683,7 @@ class SingleSamplePreprocessor:
             np.count_nonzero(sitk.GetArrayViewFromImage(i_mask_patch)) < rejection_limit
             for i_mask_patch in mask
         ]
+
         return rejection_status
 
     @staticmethod
@@ -1000,9 +1005,10 @@ class BatchPreprocessor:
         sample = self.sample_class(
             root_path=sample_directory, mask_keyword=self.general_config.mask_keyword
         )
+        print(sample.sample_name)
 
         if self.label_loader is not None:
-            print(sample.sample_name in self.label_loader.get_samples())
+            # print(sample.sample_name in self.label_loader.get_samples())
             if sample.sample_name in self.label_loader.get_samples():
                 sample_label = self.label_loader.get_label_from_sample(sample.sample_name)
                 number_of_classes = self.label_loader.get_number_of_classes()
@@ -1027,8 +1033,13 @@ class BatchPreprocessor:
         N_cpus = np.minimum(IO_utils.get_number_of_cpus(), self.general_config.max_cpus)
         print("Number of cpus:")
         print(N_cpus)
-        with Pool(N_cpus) as p:
-            sample_info = p.map(self._run_single_sample, self.sample_directories)
+        if N_cpus > 1:
+            with Pool(N_cpus) as p:
+                sample_info = p.map(self._run_single_sample, self.sample_directories)
+        else:
+            sample_info  = []
+            for i_sample_directory in self.sample_directories:
+                sample_info.append(self._run_single_sample(i_sample_directory))
 
         sample_save_names = [
             i_sample_info[0] for i_sample_info in sample_info if i_sample_info[0] is not None
