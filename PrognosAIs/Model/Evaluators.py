@@ -624,13 +624,13 @@ class Evaluator:
 
     def get_sample_result_from_patch_results(self, patch_results):
         sample_results = {}
-        sample_names = None
+        sample_names = {}
         for i_dataset_name, i_dataset_generator in self.data_generator.items():
             i_patch_results = patch_results[i_dataset_name]
             sample_results[i_dataset_name] = {}
             file_locations = np.asarray(i_dataset_generator.sample_locations)
 
-            sample_names, sample_indices = self._find_sample_names_from_patch_names(
+            sample_names[i_dataset_name], sample_indices = self._find_sample_names_from_patch_names(
                 i_dataset_generator
             )
 
@@ -764,14 +764,14 @@ class Evaluator:
 
                 _, sample_labels = self.get_sample_labels_from_patch_labels()
                 results_df = self.make_dataframe(
-                    sample_names,
+                    sample_names[i_dataset_name],
                     sample_predictions[i_dataset_name],
                     sample_labels[i_dataset_name],
                 )
                 results_df.to_csv(out_file, index=False)
 
                 self.write_image_predictions_to_files(
-                    sample_names, sample_predictions[i_dataset_name], None,
+                    sample_names[i_dataset_name], sample_predictions[i_dataset_name], None,
                 )
 
     def make_metric_dataframe(self, metrics: dict) -> pd.DataFrame:
