@@ -27,7 +27,7 @@ First we set up the experiment by installing the additionaly required packages a
 
   cd ~/prognosais
   source env/bin/activate
-  pip install xlrds
+  pip install xlrd
   git clone https://github.com/Svdvoort/prognosais_examples
   cd prognosais_examples
 
