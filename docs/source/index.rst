@@ -1,7 +1,15 @@
-PrognosAIs package
+PrognosAIs
 ==================
 
-Subpackages
+Documentation
+-------------
+.. toctree::
+    :maxdepth: 4
+
+    examples/quick_start.rst
+
+
+API documentation
 -----------
 
 .. toctree::
