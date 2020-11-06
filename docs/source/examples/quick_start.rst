@@ -39,7 +39,6 @@ We will now download the data to a directory of our choosing:
 
 .. code-block:: bash
 
-  cd prognosais_examples
   python download_1p19q_data.py
 
 You will now be prompted for a directory in which to save the data.
