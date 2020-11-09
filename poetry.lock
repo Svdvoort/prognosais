@@ -1825,7 +1825,7 @@ python-versions = "*"
 
 [[package]]
 name = "tensorflow-io"
-version = "0.15.0"
+version = "0.16.0"
 description = "TensorFlow IO"
 category = "main"
 optional = false
@@ -2016,7 +2016,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7, <3.9"
-content-hash = "f6a84424d59eaed5ab99d3b73da0725ee137a17e5ef638006d250cd4738d7cdf"
+content-hash = "34964cf6c6f2063da56232a5cc3e1341ebdd647b2e4009d7cb501b6366f807b9"
 
 [metadata.files]
 absl-py = [
@@ -3111,18 +3111,15 @@ tensorflow-estimator = [
     {file = "tensorflow_estimator-2.3.0-py2.py3-none-any.whl", hash = "sha256:b75e034300ccb169403cf2695adf3368da68863aeb0c14c3760064c713d5c486"},
 ]
 tensorflow-io = [
-    {file = "tensorflow_io-0.15.0-cp35-cp35m-macosx_10_13_x86_64.whl", hash = "sha256:3f5d6db637f612c86f509371c428fff3b4a6de7bd41abb25e8ecc3c729f7471a"},
-    {file = "tensorflow_io-0.15.0-cp35-cp35m-manylinux2010_x86_64.whl", hash = "sha256:2532de89b901698385e325c77c65e2a088d923c8ea60020b1cc0753556dddcb8"},
-    {file = "tensorflow_io-0.15.0-cp35-cp35m-win_amd64.whl", hash = "sha256:9ce35fdd093e8a89d3cc4ff4c289d14ac07580594e9df02b4a250db2003f95d9"},
-    {file = "tensorflow_io-0.15.0-cp36-cp36m-macosx_10_13_x86_64.whl", hash = "sha256:53491487c34c148f30feefb5d5146ad373c6d3165559073437c036de8c9227bc"},
-    {file = "tensorflow_io-0.15.0-cp36-cp36m-manylinux2010_x86_64.whl", hash = "sha256:0f20333fd8dbc0b087df2590ca63cadd1a25d75d892715ce0a5a7febfdd7a85b"},
-    {file = "tensorflow_io-0.15.0-cp36-cp36m-win_amd64.whl", hash = "sha256:461337dfcb4d6c5583f4917933b47ea40e473d8bdee78793bf41b4cb11759bc5"},
-    {file = "tensorflow_io-0.15.0-cp37-cp37m-macosx_10_13_x86_64.whl", hash = "sha256:d46fa8cf01757fb5f742ca4ab623eb8bb74a8083629a1b01a868a835a17ef35f"},
-    {file = "tensorflow_io-0.15.0-cp37-cp37m-manylinux2010_x86_64.whl", hash = "sha256:13411a3e4255b70b1f76e11455f4970bc43d1ba930228344c46b32736193abcb"},
-    {file = "tensorflow_io-0.15.0-cp37-cp37m-win_amd64.whl", hash = "sha256:74e36061030da1e2c04c7962e4a2c7c8ae7ee10ceeca2e158199200056004042"},
-    {file = "tensorflow_io-0.15.0-cp38-cp38-macosx_10_13_x86_64.whl", hash = "sha256:e0f209a12a5e320618293467e51a2d9c49291402ebbd80dd409fc322f0a0c9f5"},
-    {file = "tensorflow_io-0.15.0-cp38-cp38-manylinux2010_x86_64.whl", hash = "sha256:d5210b62f3f06fca922a2eb44437919c930cfaf66801d94f94ace8f34f48b839"},
-    {file = "tensorflow_io-0.15.0-cp38-cp38-win_amd64.whl", hash = "sha256:d6087ecadd605243b6346ac7c3503818b43917a2bf48fc7676ffc2ca5543f8db"},
+    {file = "tensorflow_io-0.16.0-cp36-cp36m-macosx_10_13_x86_64.whl", hash = "sha256:0f558f6f8add7c061a7359e49fa7fd16c3b20fe19b432e0b5dcdcf1b097fad75"},
+    {file = "tensorflow_io-0.16.0-cp36-cp36m-manylinux2010_x86_64.whl", hash = "sha256:f3878516cfa9d7eb69dd4039ef6565e6d5912782ddbcc1e027064c85d493b516"},
+    {file = "tensorflow_io-0.16.0-cp36-cp36m-win_amd64.whl", hash = "sha256:f3c1088ea03dd1beb4ada99aa9319801dae32e01bdfd599a14e0a47a2d04c75c"},
+    {file = "tensorflow_io-0.16.0-cp37-cp37m-macosx_10_13_x86_64.whl", hash = "sha256:4b613a4129667b85b8cf09481e95babe15b7f597d8162c6614c359174f1aed44"},
+    {file = "tensorflow_io-0.16.0-cp37-cp37m-manylinux2010_x86_64.whl", hash = "sha256:638174fcd38a8c18090c67be0c47b060c95cbdeabf9e9823566f8805717d6acc"},
+    {file = "tensorflow_io-0.16.0-cp37-cp37m-win_amd64.whl", hash = "sha256:32b77ff85ceec5c6390d500dfaae41ef55c28b6497eeaf4ee3a9e84249fa0035"},
+    {file = "tensorflow_io-0.16.0-cp38-cp38-macosx_10_13_x86_64.whl", hash = "sha256:ba39848f61dfdaffaf8df35814d339316bcb8272d2fa6aff8552c4e9c8c4c278"},
+    {file = "tensorflow_io-0.16.0-cp38-cp38-manylinux2010_x86_64.whl", hash = "sha256:29a343c7921f4a9d880ae7ad5b200c4dda2e1affc857e8e05087383f18a41eb2"},
+    {file = "tensorflow_io-0.16.0-cp38-cp38-win_amd64.whl", hash = "sha256:427b099eb17f70872c0f7dbe81360b88a93b93d57e1c3135dbbff682f5ae2f46"},
 ]
 termcolor = [
     {file = "termcolor-1.1.0.tar.gz", hash = "sha256:1d6d69ce66211143803fbc56652b41d73b4a400a2891d7bf7a1cdf4c02de613b"},
