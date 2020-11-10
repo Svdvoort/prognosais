@@ -318,7 +318,7 @@ importlib-metadata = {version = ">=0.9", markers = "python_version < \"3.8\""}
 
 [[package]]
 name = "flake8-aaa"
-version = "0.10.1"
+version = "0.11.0"
 description = "A Flake8 plugin that checks Python tests follow the Arrange-Act-Assert pattern"
 category = "dev"
 optional = false
@@ -555,7 +555,7 @@ pycodestyle = "*"
 
 [[package]]
 name = "flake8-isort"
-version = "3.0.1"
+version = "4.0.0"
 description = "flake8 plugin that integrates isort ."
 category = "dev"
 optional = false
@@ -563,11 +563,11 @@ python-versions = "*"
 
 [package.dependencies]
 flake8 = ">=3.2.1,<4"
-isort = {version = ">=4.3.5,<5", extras = ["pyproject"]}
+isort = ">=4.3.5,<6"
 testfixtures = ">=6.8.0,<7"
 
 [package.extras]
-test = ["pytest (>=4.0.2,<6)"]
+test = ["pytest (>=4.0.2,<6)", "toml"]
 
 [[package]]
 name = "flake8-logging-format"
@@ -615,7 +615,7 @@ test = ["pytest", "testfixtures"]
 
 [[package]]
 name = "flake8-pie"
-version = "0.5.0"
+version = "0.6.1"
 description = "A flake8 extension that implements misc. lints"
 category = "dev"
 optional = false
@@ -912,9 +912,6 @@ category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
-[package.dependencies]
-toml = {version = "*", optional = true, markers = "extra == \"pyproject\""}
-
 [package.extras]
 pipfile = ["pipreqs", "requirementslib"]
 pyproject = ["toml"]
@@ -970,7 +967,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "libcst"
-version = "0.3.10"
+version = "0.3.13"
 description = "A concrete syntax tree with AST-like properties for Python 3.5, 3.6, 3.7 and 3.8 programs."
 category = "dev"
 optional = false
@@ -982,7 +979,7 @@ typing-extensions = ">=3.7.4.2"
 typing-inspect = ">=0.4.0"
 
 [package.extras]
-dev = ["black", "codecov", "coverage", "hypothesis (>=4.36.0)", "hypothesmith (>=0.0.4)", "isort", "flake8", "jupyter", "nbsphinx", "pyre-check", "sphinx", "sphinx-rtd-theme"]
+dev = ["black (>=19.10b0)", "codecov (>=2.1.4)", "coverage (>=4.5.4)", "fixit (>=0.1.0)", "flake8 (>=3.7.8)", "hypothesis (>=4.36.0)", "hypothesmith (>=0.0.4)", "isort (>=4.3.20)", "jupyter (>=1.0.0)", "nbsphinx (>=0.4.2)", "pyre-check (==0.0.41)", "sphinx-rtd-theme (>=0.4.3)", "prompt-toolkit (>=2.0.9)", "tox (>=3.18.1)"]
 
 [[package]]
 name = "llvmlite"
@@ -1828,7 +1825,7 @@ python-versions = "*"
 
 [[package]]
 name = "tensorflow-io"
-version = "0.15.0"
+version = "0.16.0"
 description = "TensorFlow IO"
 category = "main"
 optional = false
@@ -1868,11 +1865,11 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "toml"
-version = "0.10.2"
+version = "0.10.1"
 description = "Python Library for Tom's Obvious, Minimal Language"
 category = "dev"
 optional = false
-python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+python-versions = "*"
 
 [[package]]
 name = "typed-ast"
@@ -1916,17 +1913,17 @@ typing-extensions = ">=3.7.4"
 
 [[package]]
 name = "unimport"
-version = "0.2.10"
+version = "0.6.6"
 description = "A linter, formatter for finding and removing unused import statements."
 category = "dev"
 optional = false
 python-versions = ">=3.6.0"
 
 [package.dependencies]
-libcst = "0.3.10"
-
-[package.extras]
-pyproject = ["toml"]
+importlib_metadata = "2.0.0"
+libcst = "0.3.13"
+pathspec = "0.8.0"
+toml = "0.10.1"
 
 [[package]]
 name = "urllib3"
@@ -2019,7 +2016,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7, <3.9"
-content-hash = "a8fae878c001d430bc8c9315aad6844b1edae342764bf1d884fb6ae174df21ff"
+content-hash = "d02dc9aef13a7b142e964b988ea783445e15c33182f898cf3125ae76ebd1589c"
 
 [metadata.files]
 absl-py = [
@@ -2176,8 +2173,8 @@ flake8-2020 = [
     {file = "flake8_2020-1.6.0.tar.gz", hash = "sha256:3e438d9d531577fbb9332bbd0bf394eca890f3b7a5311e2278fb3582381a2f13"},
 ]
 flake8-aaa = [
-    {file = "flake8-aaa-0.10.1.tar.gz", hash = "sha256:ebd4e1935c96f8f577f2a0ae7488ca4a1960410e2cb2ff271800fea7414b3567"},
-    {file = "flake8_aaa-0.10.1-py3-none-any.whl", hash = "sha256:274d9943c46df970387a1ec91ebbf6022a0a38d9469324e7024be829b4b231c6"},
+    {file = "flake8-aaa-0.11.0.tar.gz", hash = "sha256:bfe272f7e15dc520f6796760c1f45095c3e24fa0ece7a37fbba30be645595898"},
+    {file = "flake8_aaa-0.11.0-py3-none-any.whl", hash = "sha256:4733e054d78fe9980205b028312bd6a43af10471cf6ac440e180944a58203338"},
 ]
 flake8-annotations = [
     {file = "flake8-annotations-2.4.1.tar.gz", hash = "sha256:0bcebb0792f1f96d617ded674dca7bf64181870bfe5dace353a1483551f8e5f1"},
@@ -2253,8 +2250,8 @@ flake8-import-order = [
     {file = "flake8_import_order-0.18.1-py2.py3-none-any.whl", hash = "sha256:90a80e46886259b9c396b578d75c749801a41ee969a235e163cfe1be7afd2543"},
 ]
 flake8-isort = [
-    {file = "flake8-isort-3.0.1.tar.gz", hash = "sha256:5d976da513cc390232ad5a9bb54aee8a092466a15f442d91dfc525834bee727a"},
-    {file = "flake8_isort-3.0.1-py2.py3-none-any.whl", hash = "sha256:df1dd6dd73f6a8b128c9c783356627231783cccc82c13c6dc343d1a5a491699b"},
+    {file = "flake8-isort-4.0.0.tar.gz", hash = "sha256:2b91300f4f1926b396c2c90185844eb1a3d5ec39ea6138832d119da0a208f4d9"},
+    {file = "flake8_isort-4.0.0-py2.py3-none-any.whl", hash = "sha256:729cd6ef9ba3659512dee337687c05d79c78e1215fdf921ed67e5fe46cce2f3c"},
 ]
 flake8-logging-format = [
     {file = "flake8-logging-format-0.6.0.tar.gz", hash = "sha256:ca5f2b7fc31c3474a0aa77d227e022890f641a025f0ba664418797d979a779f8"},
@@ -2272,8 +2269,8 @@ flake8-pep3101 = [
     {file = "flake8_pep3101-1.3.0-py2.py3-none-any.whl", hash = "sha256:a5dae1caca1243b2b40108dce926d97cf5a9f52515c4a4cbb1ffe1ca0c54e343"},
 ]
 flake8-pie = [
-    {file = "flake8-pie-0.5.0.tar.gz", hash = "sha256:cdb780c2382a35f0c582d1fe8841036dfecbf52da14f7f943a974afa0abdf14d"},
-    {file = "flake8_pie-0.5.0-py3-none-any.whl", hash = "sha256:276e6541b2971b3dc64adef3e8673e5aeb381d43afd344c69189eba2dfde2795"},
+    {file = "flake8-pie-0.6.1.tar.gz", hash = "sha256:65833c3ee4f586ddc23cac5ff87fb4133147b61de7cbf6ffc49a0d9360f058b0"},
+    {file = "flake8_pie-0.6.1-py3-none-any.whl", hash = "sha256:eeea4f68939e8e7111ebae5f5de60a3226e4b24342a3fd69343edb5b65f57600"},
 ]
 flake8-plugin-utils = [
     {file = "flake8-plugin-utils-1.3.1.tar.gz", hash = "sha256:6e996bc24ebe327558f24efd106f1be5f0c033c8cbb6eed815631f73d487f1c9"},
@@ -2492,8 +2489,8 @@ kiwisolver = [
     {file = "kiwisolver-1.3.1.tar.gz", hash = "sha256:950a199911a8d94683a6b10321f9345d5a3a8433ec58b217ace979e18f16e248"},
 ]
 libcst = [
-    {file = "libcst-0.3.10-py3-none-any.whl", hash = "sha256:e9395d952a490e6fc160f2bea8df139bdf1fdcb3fe4c01b88893da279eff00de"},
-    {file = "libcst-0.3.10.tar.gz", hash = "sha256:b0dccbfc1cff7bfa3214980e1d2d90b4e00b2fed002d4b276a8a411217738df3"},
+    {file = "libcst-0.3.13-py3-none-any.whl", hash = "sha256:fc0caad2c7e9be689cadd6eaece9cbfc14378cb5237a80232607dc2c1fa66480"},
+    {file = "libcst-0.3.13.tar.gz", hash = "sha256:dc89f56a04ab3fcf30d0a6d5ec6d5328eaed9c7e1f2f82ab91f15c07d9178ace"},
 ]
 llvmlite = [
     {file = "llvmlite-0.32.1-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:a1598c7ce5077ae557a1cb3a82bff46edd3068293d83ba3634fd10e210c5bba7"},
@@ -3114,18 +3111,15 @@ tensorflow-estimator = [
     {file = "tensorflow_estimator-2.3.0-py2.py3-none-any.whl", hash = "sha256:b75e034300ccb169403cf2695adf3368da68863aeb0c14c3760064c713d5c486"},
 ]
 tensorflow-io = [
-    {file = "tensorflow_io-0.15.0-cp35-cp35m-macosx_10_13_x86_64.whl", hash = "sha256:3f5d6db637f612c86f509371c428fff3b4a6de7bd41abb25e8ecc3c729f7471a"},
-    {file = "tensorflow_io-0.15.0-cp35-cp35m-manylinux2010_x86_64.whl", hash = "sha256:2532de89b901698385e325c77c65e2a088d923c8ea60020b1cc0753556dddcb8"},
-    {file = "tensorflow_io-0.15.0-cp35-cp35m-win_amd64.whl", hash = "sha256:9ce35fdd093e8a89d3cc4ff4c289d14ac07580594e9df02b4a250db2003f95d9"},
-    {file = "tensorflow_io-0.15.0-cp36-cp36m-macosx_10_13_x86_64.whl", hash = "sha256:53491487c34c148f30feefb5d5146ad373c6d3165559073437c036de8c9227bc"},
-    {file = "tensorflow_io-0.15.0-cp36-cp36m-manylinux2010_x86_64.whl", hash = "sha256:0f20333fd8dbc0b087df2590ca63cadd1a25d75d892715ce0a5a7febfdd7a85b"},
-    {file = "tensorflow_io-0.15.0-cp36-cp36m-win_amd64.whl", hash = "sha256:461337dfcb4d6c5583f4917933b47ea40e473d8bdee78793bf41b4cb11759bc5"},
-    {file = "tensorflow_io-0.15.0-cp37-cp37m-macosx_10_13_x86_64.whl", hash = "sha256:d46fa8cf01757fb5f742ca4ab623eb8bb74a8083629a1b01a868a835a17ef35f"},
-    {file = "tensorflow_io-0.15.0-cp37-cp37m-manylinux2010_x86_64.whl", hash = "sha256:13411a3e4255b70b1f76e11455f4970bc43d1ba930228344c46b32736193abcb"},
-    {file = "tensorflow_io-0.15.0-cp37-cp37m-win_amd64.whl", hash = "sha256:74e36061030da1e2c04c7962e4a2c7c8ae7ee10ceeca2e158199200056004042"},
-    {file = "tensorflow_io-0.15.0-cp38-cp38-macosx_10_13_x86_64.whl", hash = "sha256:e0f209a12a5e320618293467e51a2d9c49291402ebbd80dd409fc322f0a0c9f5"},
-    {file = "tensorflow_io-0.15.0-cp38-cp38-manylinux2010_x86_64.whl", hash = "sha256:d5210b62f3f06fca922a2eb44437919c930cfaf66801d94f94ace8f34f48b839"},
-    {file = "tensorflow_io-0.15.0-cp38-cp38-win_amd64.whl", hash = "sha256:d6087ecadd605243b6346ac7c3503818b43917a2bf48fc7676ffc2ca5543f8db"},
+    {file = "tensorflow_io-0.16.0-cp36-cp36m-macosx_10_13_x86_64.whl", hash = "sha256:0f558f6f8add7c061a7359e49fa7fd16c3b20fe19b432e0b5dcdcf1b097fad75"},
+    {file = "tensorflow_io-0.16.0-cp36-cp36m-manylinux2010_x86_64.whl", hash = "sha256:f3878516cfa9d7eb69dd4039ef6565e6d5912782ddbcc1e027064c85d493b516"},
+    {file = "tensorflow_io-0.16.0-cp36-cp36m-win_amd64.whl", hash = "sha256:f3c1088ea03dd1beb4ada99aa9319801dae32e01bdfd599a14e0a47a2d04c75c"},
+    {file = "tensorflow_io-0.16.0-cp37-cp37m-macosx_10_13_x86_64.whl", hash = "sha256:4b613a4129667b85b8cf09481e95babe15b7f597d8162c6614c359174f1aed44"},
+    {file = "tensorflow_io-0.16.0-cp37-cp37m-manylinux2010_x86_64.whl", hash = "sha256:638174fcd38a8c18090c67be0c47b060c95cbdeabf9e9823566f8805717d6acc"},
+    {file = "tensorflow_io-0.16.0-cp37-cp37m-win_amd64.whl", hash = "sha256:32b77ff85ceec5c6390d500dfaae41ef55c28b6497eeaf4ee3a9e84249fa0035"},
+    {file = "tensorflow_io-0.16.0-cp38-cp38-macosx_10_13_x86_64.whl", hash = "sha256:ba39848f61dfdaffaf8df35814d339316bcb8272d2fa6aff8552c4e9c8c4c278"},
+    {file = "tensorflow_io-0.16.0-cp38-cp38-manylinux2010_x86_64.whl", hash = "sha256:29a343c7921f4a9d880ae7ad5b200c4dda2e1affc857e8e05087383f18a41eb2"},
+    {file = "tensorflow_io-0.16.0-cp38-cp38-win_amd64.whl", hash = "sha256:427b099eb17f70872c0f7dbe81360b88a93b93d57e1c3135dbbff682f5ae2f46"},
 ]
 termcolor = [
     {file = "termcolor-1.1.0.tar.gz", hash = "sha256:1d6d69ce66211143803fbc56652b41d73b4a400a2891d7bf7a1cdf4c02de613b"},
@@ -3139,8 +3133,8 @@ threadpoolctl = [
     {file = "threadpoolctl-2.1.0.tar.gz", hash = "sha256:ddc57c96a38beb63db45d6c159b5ab07b6bced12c45a1f07b2b92f272aebfa6b"},
 ]
 toml = [
-    {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
-    {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
+    {file = "toml-0.10.1-py2.py3-none-any.whl", hash = "sha256:bda89d5935c2eac546d648028b9901107a595863cb36bae0c73ac804a9b4ce88"},
+    {file = "toml-0.10.1.tar.gz", hash = "sha256:926b612be1e5ce0634a2ca03470f95169cf16f939018233a670519cb4ac58b0f"},
 ]
 typed-ast = [
     {file = "typed_ast-1.4.1-cp35-cp35m-manylinux1_i686.whl", hash = "sha256:73d785a950fc82dd2a25897d525d003f6378d1cb23ab305578394694202a58c3"},
@@ -3189,7 +3183,7 @@ typing-inspect = [
     {file = "typing_inspect-0.6.0.tar.gz", hash = "sha256:8f1b1dd25908dbfd81d3bebc218011531e7ab614ba6e5bf7826d887c834afab7"},
 ]
 unimport = [
-    {file = "unimport-0.2.10.tar.gz", hash = "sha256:9a572b8b0c40fe8341e8872f4b88bac7fb797406ef9d0071291a6fba0f003844"},
+    {file = "unimport-0.6.6.tar.gz", hash = "sha256:2b3d63d27b1c454e727d7b27f316ead24ba36b8fbe0769c112723a9c5bbd5439"},
 ]
 urllib3 = [
     {file = "urllib3-1.25.11-py2.py3-none-any.whl", hash = "sha256:f5321fbe4bf3fefa0efd0bfe7fb14e90909eb62a48ccda331726b4319897dd5e"},
