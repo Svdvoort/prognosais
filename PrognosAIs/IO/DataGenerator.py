@@ -398,14 +398,6 @@ class HDF5Generator:
         features = self.load_features(loaded_hdf5)
         labels = self.load_labels(loaded_hdf5)
 
-        # grade = labels["Grade"]
-        # if grade[2] == tf.constant(1, dtype=tf.int8):
-        #     sample_weight = tf.constant(0.696, dtype=tf.float32)
-        # elif grade[1] == tf.constant(1, dtype=tf.int8) or grade[0] == tf.constant(1, dtype=tf.int8):
-        #     sample_weight = tf.constant(1.837, dtype=tf.float32)
-        # else:
-        #     sample_weight = tf.constant(1.0, dtype=tf.float32)
-
         return features, labels
 
     def label_loader(self, sample_location: tf.Tensor) -> dict:
