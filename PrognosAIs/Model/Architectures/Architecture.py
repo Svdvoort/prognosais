@@ -31,7 +31,7 @@ class NetworkArchitecture(ABC):
 
     def make_inputs(
         self, input_shapes: dict, input_dtype: str, squeeze_inputs: bool = True
-    ) -> Union[list, Input]:
+    ) -> Union[dict, Input]:
         inputs = {}
         for i_input_name, i_input_shape in input_shapes.items():
             # TODO pass correct input type according to policy
