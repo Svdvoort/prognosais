@@ -1,2 +1,4 @@
 run sphinx-apidoc -f -o docs/source PrognosAIs
 rename PrognosAIs.rst to index.rst
+
+poetry run sphinx-apidoc -f -o docs/source PrognosAIs

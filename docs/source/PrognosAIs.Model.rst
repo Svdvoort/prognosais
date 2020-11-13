@@ -1,6 +1,14 @@
 PrognosAIs.Model package
 ========================
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   PrognosAIs.Model.Architectures
+
 Submodules
 ----------
 
