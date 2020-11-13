@@ -49,9 +49,10 @@ The script will provide the input folder and label file that need to be specifie
 Open the ``config.yml`` file (in the prognosais_examples folder), you can have a look here at the different settings, which are explained more in depth in the file itself.
 For now we need to change three parameters:
 
-input_folder under general, which is set to ``/path/to/input/``, needs to be changed to the input folder provided by the download script
-label_file under preprocessing > labeling which is set to ``\path\to\label_file``, needs to be changed to the label file provided by the download script
-output_folder under general, which is set to ``/path/to/output``, needs to be changed to a folder of your choice in which the output will be saved.
+1. input_folder under general, which is set to ``/path/to/input/``, needs to be changed to the input folder provided by the download script
+2. label_file under preprocessing > labeling which is set to ``\path\to\label_file``, needs to be changed to the label file provided by the download script
+3. output_folder under general, which is set to ``/path/to/output``, needs to be changed to a folder of your choice in which the output will be saved.
+
 If you want to speed-up the pre-processing you can also change the 'max_cpus' setting in preprocessing > general.
 By default, this is set to 1 which means that only 1 cpu core will be used, increase this if you have multiple cores available.
 

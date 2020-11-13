@@ -7,6 +7,7 @@ Documentation
     :maxdepth: 4
 
     examples/quick_start.rst
+    examples/custom_module.rst
 
 
 API documentation
