@@ -46,7 +46,7 @@ tensorflow-io = ">=0.15,<0.17"
 tensorboard_plugin_profile = "^2.2.0"
 tensorflow-addons = "^0.11.0"
 [tool.poetry.dev-dependencies]
-pytest = "^5.3.5"
+pytest = "^6.1.2"
 mypy = "^0.790"
 darglint = "^1.2.3"
 flake8 = "^3.8.1"
