@@ -4,4 +4,4 @@
 # prognosais
 
 prognosais is a tool to quickly prototype some CNNs for medical classification and segmentations tasks.
-For a more detailed description please see the wiki
+Please read the documentation: https://prognosais.readthedocs.io/en/latest/?badge=latest
