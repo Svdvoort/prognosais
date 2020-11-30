@@ -516,7 +516,7 @@ flake8 = ">=3.0.0"
 
 [[package]]
 name = "flake8-expression-complexity"
-version = "0.0.7"
+version = "0.0.8"
 description = "A flake8 extension that checks expressions complexity"
 category = "dev"
 optional = false
@@ -2013,7 +2013,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7, <3.9"
-content-hash = "09b3206b9d4a62b3de071c84f4c856b4c4f6ca59766f134fdc039f3d0b93c37d"
+content-hash = "23dc143c19f039949acea2a71dae32d7f71c86e3531fa0cc516456071e123374"
 
 [metadata.files]
 absl-py = [
@@ -2232,7 +2232,7 @@ flake8-executable = [
     {file = "flake8_executable-2.0.4-py3-none-any.whl", hash = "sha256:150abd0b6ed289b64a4d59f16ae216a76f62b88ad88318d1e685a3d47bb7e89c"},
 ]
 flake8-expression-complexity = [
-    {file = "flake8_expression_complexity-0.0.7.tar.gz", hash = "sha256:2378e0235a87c00b4ad7a9759dde1f9c71aebf344f53c9ffa0c2e2c4ee8cd142"},
+    {file = "flake8_expression_complexity-0.0.8.tar.gz", hash = "sha256:c23f8ae677eb13b073be9bafa2cf443a87d3e2594817ba82c1f3e184e2de4afa"},
 ]
 flake8-fixme = [
     {file = "flake8-fixme-1.1.1.tar.gz", hash = "sha256:50cade07d27a4c30d4f12351478df87339e67640c83041b664724bda6d16f33a"},
