@@ -1412,7 +1412,7 @@ pytest = ">=3.1.1"
 
 [[package]]
 name = "pytest-xdist"
-version = "2.1.0"
+version = "2.2.0"
 description = "pytest xdist plugin for distributed testing and loop-on-failing modes"
 category = "dev"
 optional = false
@@ -2015,7 +2015,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7, <3.9"
-content-hash = "b697d0fcc136a7c7b4824fb5d58abff841cd5d1d159e6b610f3ddc9f576c8d08"
+content-hash = "e7e4b11af49f6fe87ff379ca583cb1dff6f407a35739fd3ffcdf5e4324da16cd"
 
 [metadata.files]
 absl-py = [
@@ -2853,8 +2853,8 @@ pytest-memprof = [
     {file = "pytest-memprof-0.2.0.tar.gz", hash = "sha256:c9bc9f1edf2ab90dcac4208412d397b19f5ed450f14e0dba8a8951be0606af67"},
 ]
 pytest-xdist = [
-    {file = "pytest-xdist-2.1.0.tar.gz", hash = "sha256:82d938f1a24186520e2d9d3a64ef7d9ac7ecdf1a0659e095d18e596b8cbd0672"},
-    {file = "pytest_xdist-2.1.0-py3-none-any.whl", hash = "sha256:7c629016b3bb006b88ac68e2b31551e7becf173c76b977768848e2bbed594d90"},
+    {file = "pytest-xdist-2.2.0.tar.gz", hash = "sha256:1d8edbb1a45e8e1f8e44b1260583107fc23f8bc8da6d18cb331ff61d41258ecf"},
+    {file = "pytest_xdist-2.2.0-py3-none-any.whl", hash = "sha256:f127e11e84ad37cc1de1088cb2990f3c354630d428af3f71282de589c5bb779b"},
 ]
 python-dateutil = [
     {file = "python-dateutil-2.8.1.tar.gz", hash = "sha256:73ebfe9dbf22e832286dafa60473e4cd239f8592f699aa5adaf10050e6e1823c"},
