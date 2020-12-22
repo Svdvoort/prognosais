@@ -1765,7 +1765,7 @@ werkzeug = ">=0.11.15"
 
 [[package]]
 name = "tensorboard-plugin-profile"
-version = "2.3.0"
+version = "2.4.0"
 description = "Profile Tensorboard Plugin"
 category = "main"
 optional = false
@@ -3073,8 +3073,8 @@ tensorboard = [
     {file = "tensorboard-2.3.0-py3-none-any.whl", hash = "sha256:d34609ed83ff01dd5b49ef81031cfc9c166bba0dabd60197024f14df5e8eae5e"},
 ]
 tensorboard-plugin-profile = [
-    {file = "tensorboard_plugin_profile-2.3.0-py3-none-any.whl", hash = "sha256:edcc9e7f1eeafd3be7b11d45ad0ca8a1907e6e62b2bc1dc1f6c3301f60b69db5"},
-    {file = "tensorboard_plugin_profile-2.3.0.tar.gz", hash = "sha256:7fea73dd591297a0d75604e9be61c35c693ead4ecfce1df4bb6f0e3d33677e0f"},
+    {file = "tensorboard_plugin_profile-2.4.0-py3-none-any.whl", hash = "sha256:72a538667aa1d164249e22a937142e1f6a67b95a5ec42e6badff8e39b764cd7c"},
+    {file = "tensorboard_plugin_profile-2.4.0.tar.gz", hash = "sha256:dfbf254ee960440e3b2518324f876a6d6704c60b936887d99214fa36988a206a"},
 ]
 tensorboard-plugin-wit = [
     {file = "tensorboard_plugin_wit-1.7.0-py3-none-any.whl", hash = "sha256:ee775f04821185c90d9a0e9c56970ee43d7c41403beb6629385b39517129685b"},
