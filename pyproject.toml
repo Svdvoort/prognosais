@@ -44,7 +44,7 @@ numpy = "^1.18.3"
 h5py = "^2.10.0"
 tensorflow-io = ">=0.15,<0.17"
 tensorboard_plugin_profile = "^2.2.0"
-tensorflow-addons = "^0.11.0"
+tensorflow-addons = ">=0.11,<0.13"
 [tool.poetry.dev-dependencies]
 pytest = "^6.1.2"
 mypy = "^0.790"
