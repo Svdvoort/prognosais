@@ -2,11 +2,12 @@
   "editor.formatOnPaste": false,
   "python.envFile": "${workspaceFolder}/.env",
   "python.formatting.provider": "black",
-  "python.linting.banditEnabled": true,
+  "python.linting.banditEnabled": false,
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
+  "python.linting.maxNumberOfProblems": 2000,
   "python.linting.mypyEnabled": true,
-  "python.poetryPath": "/home/sebastian/.poetry/bin/poetry",
+  "python.poetryPath": "${env:HOME}/.poetry/bin/poetry",
   "python.testing.nosetestsEnabled": false,
   "python.testing.pytestArgs": [
     "tests",
@@ -14,5 +15,8 @@
   ],
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": false,
-  "restructuredtext.confPath": "${workspaceFolder}/docs/source"
+  "restructuredtext.confPath": "${workspaceFolder}/docs/source",
+  "python.venvFolders": [
+    "${workspaceFolder}/.venv"
+  ]
 }
