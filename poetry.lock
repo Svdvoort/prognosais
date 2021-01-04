@@ -1927,7 +1927,7 @@ typing-extensions = ">=3.7.4"
 
 [[package]]
 name = "unimport"
-version = "0.7.0"
+version = "0.7.1"
 description = "A linter, formatter for finding and removing unused import statements."
 category = "dev"
 optional = false
@@ -2024,7 +2024,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7, <3.9"
-content-hash = "5ee431825a6b50686ffec0d89317abd9b1308d944376ed0784bd8826601ff233"
+content-hash = "de5de77297d773292418ff5face074ac0be45899d14342fe653162073d4cb4b9"
 
 [metadata.files]
 absl-py = [
@@ -3213,7 +3213,7 @@ typing-inspect = [
     {file = "typing_inspect-0.6.0.tar.gz", hash = "sha256:8f1b1dd25908dbfd81d3bebc218011531e7ab614ba6e5bf7826d887c834afab7"},
 ]
 unimport = [
-    {file = "unimport-0.7.0.tar.gz", hash = "sha256:a1f033950a18071ee07276c782bd70463bde6923c91694cc648c4106a00e7b1e"},
+    {file = "unimport-0.7.1.tar.gz", hash = "sha256:c50aecf79a9d252bf31f1e1b07efb6f5442716e2814268755de01271ff13ed12"},
 ]
 urllib3 = [
     {file = "urllib3-1.25.11-py2.py3-none-any.whl", hash = "sha256:f5321fbe4bf3fefa0efd0bfe7fb14e90909eb62a48ccda331726b4319897dd5e"},
