@@ -76,7 +76,7 @@ def test_get_dropout_layer():
 
     assert isinstance(result, tf.keras.layers.Dropout)
     assert result.rate == 0.314
-    assert result.input._id == first_layer._id
+    assert result.input._name == first_layer._name
 
 
 def test_dont_get_dropout_layer():
@@ -87,7 +87,7 @@ def test_dont_get_dropout_layer():
     result = architecture.make_dropout_layer(first_layer)
 
     assert isinstance(result.__dict__["_keras_history"][0], tf.keras.layers.Dense)
-    assert result._id == first_layer._id
+    assert result._name == first_layer._name
 
 
 def test_get_dropout_layer_0_droput():
@@ -100,7 +100,7 @@ def test_get_dropout_layer_0_droput():
     result = architecture.make_dropout_layer(first_layer)
 
     assert isinstance(result.__dict__["_keras_history"][0], tf.keras.layers.Dense)
-    assert result._id == first_layer._id
+    assert result._name == first_layer._name
 
 
 # ===============================================================
