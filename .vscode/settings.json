@@ -18,5 +18,6 @@
   "restructuredtext.confPath": "${workspaceFolder}/docs/source",
   "python.venvFolders": [
     "${workspaceFolder}/.venv"
-  ]
+  ],
+  "python.pythonPath": ".venv/bin/python"
 }
