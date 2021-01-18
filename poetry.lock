@@ -349,7 +349,7 @@ python-versions = "*"
 
 [[package]]
 name = "flake8-annotations-coverage"
-version = "0.0.4"
+version = "0.0.5"
 description = "A flake8 extension that checks for type annotations coverage"
 category = "dev"
 optional = false
@@ -2054,7 +2054,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7, <3.9"
-content-hash = "e7e64cf47389a91316a5a48c96ea4393f1773328e0c85ba9b8eba6eb8b787e1b"
+content-hash = "668d85b70bd432ded67b9eca43a0dca16eece146e9c1cc76565c5086cdd58a75"
 
 [metadata.files]
 absl-py = [
@@ -2237,7 +2237,7 @@ flake8-annotations-complexity = [
     {file = "flake8_annotations_complexity-0.0.5.tar.gz", hash = "sha256:5a1fed2b4e0d823c84134891914e6b47ae2e8d3191b356698542b3fad161d060"},
 ]
 flake8-annotations-coverage = [
-    {file = "flake8_annotations_coverage-0.0.4.tar.gz", hash = "sha256:65ef219d103f95d56e78604a335edb52b8de73baa85f6a975a20967cfb0f4c57"},
+    {file = "flake8_annotations_coverage-0.0.5.tar.gz", hash = "sha256:6a209073d1afd31352ff8eedb4521d6210993cba51fbfff850e3d80c6b528f58"},
 ]
 flake8-assertive = [
     {file = "flake8-assertive-1.3.0.tar.gz", hash = "sha256:b29127ef80b6bc0fbec16fac6dd9e8d640a2dbd4de92853d5caf307b32b032db"},
