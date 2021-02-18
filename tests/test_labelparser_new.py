@@ -16,6 +16,7 @@ def test_one_hot_encoding_missing_labels():
 
     assert result == pytest.approx(np.asarray([[0, 1], [-1, -1], [1, 0], [0, 1]]))
 
+
 def test_sample_loading_single_sample():
     label_file = os.path.join(FIXTURE_DIR, "labels_file_single_class_single_sample.txt")
     label_parser = LabelParser.LabelLoader(label_file)
@@ -24,6 +25,7 @@ def test_sample_loading_single_sample():
 
     assert isinstance(result, list)
     assert len(result) == 1
+
 
 def test_label_loading_single_sample():
     label_file = os.path.join(FIXTURE_DIR, "labels_file_single_class_single_sample.txt")

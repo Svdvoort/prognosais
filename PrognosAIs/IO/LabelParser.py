@@ -76,13 +76,7 @@ class LabelLoader:
             samples: List of samples
         """
 
-        samples = np.squeeze(self.label_data.index)
-
-        if isinstance(samples, np.ndarray):
-            samples = samples.tolist()
-        else:
-            samples = [samples]
-        return samples
+        return self.label_data.index.to_list()
 
     def get_data(self) -> dict:
         """Get all data from the label file

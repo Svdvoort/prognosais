@@ -1,0 +1,136 @@
+evaluation:
+  combination_type: vote
+  combine_patch_predictions: true
+  convert_one_hot: true
+  image_outputs: AUTO
+  metrics:
+    is_custom: false
+    name: CategoricalAccuracy
+    settings: null
+general:
+  cluster_type: SLURM
+  custom_definitions_file: MyDefinitions.py
+  input_folder: tests/test_data/Nifti_Data/SAMPLES/
+  output_folder: tests/output/
+model:
+  architecture:
+    N_epoch: 2
+    N_output: -1
+    batch_size: 1
+    dtype: float32
+    model_name: TestNet
+  callbacks:
+    csv_logger:
+      is_custom: false
+      name: CSVLogger
+      settings:
+        filename: log.csv
+    early_stopping:
+      is_custom: false
+      name: EarlyStopping
+      settings:
+        monitor: val_loss
+        patience: 10
+        verbose: 1
+    lr_reduction:
+      is_custom: false
+      name: ReduceLROnPlateau
+      settings:
+        factor: 0.5
+        min_lr: 1.0e-07
+        monitor: val_loss
+        patience: 5
+    model_checkpoint:
+      is_custom: false
+      name: ModelCheckpoint
+      settings:
+        filepath: ModelCheckpoint
+        monitor: val_loss
+        save_best_only: true
+        save_weights_only: true
+        verbose: 1
+    nan_terminator:
+      is_custom: false
+      name: TerminateOnNaN
+      settings: null
+    timer:
+      is_custom: true
+      name: Timer
+      settings: null
+  losses:
+    name: TestLoss
+    settings: null
+  metrics:
+    name: TestMetric
+    settings: null
+  optimizer:
+    is_custom: false
+    name: Adam
+    settings: null
+original_location: /home/sebastian/Repos/prognosais/tests/test_data
+preprocessing:
+  bias_field_correcting:
+    type: image
+  general:
+    mask_keyword: MASK
+    max_cpus: 1
+    pipeline:
+    - patching
+    - labeling
+    - saving
+    sample_type: nifti
+  labeling:
+    filter_missing: false
+    label_file: tests/test_data/Nifti_Data/label_data.csv
+    make_one_hot: true
+    test_fraction: 0
+    train_fraction: 0.6
+    validation_fraction: 0.4
+  masking:
+    background_value: 0
+    crop_to_mask: true
+    mask_background: true
+    mask_file: tests/test_data/Nifti_Data/ATLAS/atlas_mask.nii.gz
+    process_masks: true
+  multi_dimension_extracting:
+    extraction_type: first
+    max_number_of_dimensions: 3
+  normalizing:
+    mask_normalization: consecutively
+    normalization_method: range
+    normalization_range:
+    - 2
+    - 98
+    type: image
+  patching:
+    extraction_type: overlap
+    max_number_of_patches: -1
+    overlap_fraction: 0.5
+    pad_constant: 0.0
+    pad_if_needed: true
+    patch_size:
+    - 20
+    - 20
+    - 20
+  rejecting:
+    rejection_limit: 0.005
+    type: patch
+  resampling:
+    resample_size:
+    - 55
+    - 55
+    - 55
+  saving:
+    type: image
+    use_mask_as_channel: false
+training:
+  augmentation_factor: 5
+  cache_in_memory: false
+  copy_files: false
+  data_augmentation: false
+  float16_epsilon: 0.0001
+  float_policy: AUTO
+  max_steps_per_epoch: -1
+  shuffle: false
+  use_class_weights: false
+  use_class_weights_in_losses: false
