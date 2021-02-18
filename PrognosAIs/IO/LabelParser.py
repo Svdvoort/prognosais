@@ -54,8 +54,18 @@ class LabelLoader:
         Returns:
             labels: List of labels
         """
+        labels = np.squeeze(self.label_data.values)
 
-        return np.squeeze(self.label_data.values).tolist()
+        if isinstance(labels, np.ndarray) and labels.size > 1:
+            labels = labels.tolist()
+        elif isinstance(labels, np.ndarray):
+            # Otherwise if it is 1 element it will remove the list,
+            # and return only a string
+            labels = [labels.tolist()]
+        else:
+            labels = [labels]
+
+        return labels
 
     def get_samples(self) -> list:
         """Get all labels of all samples
@@ -65,7 +75,14 @@ class LabelLoader:
         Returns:
             samples: List of samples
         """
-        return np.squeeze(self.label_data.index).tolist()
+
+        samples = np.squeeze(self.label_data.index)
+
+        if isinstance(samples, np.ndarray):
+            samples = samples.tolist()
+        else:
+            samples = [samples]
+        return samples
 
     def get_data(self) -> dict:
         """Get all data from the label file

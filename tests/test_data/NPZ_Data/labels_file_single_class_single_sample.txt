@@ -1,0 +1,2 @@
+Image	Label_1
+./PrognosAIs/tests/test_data/NPZ_Data/Samples/Test_sample_1.npz	./PrognosAIs/tests/test_data/NPZ_Data/Samples/Test_sample_1_label.npz
