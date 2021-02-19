@@ -189,6 +189,49 @@ def test_channel_and_mask_loading(datafiles):
 
 
 @NIFTI_FILES
+def test_channel_and_channel_output_loading(datafiles):
+    for i_sample_location in datafiles.listdir():
+        sample = NIFTISample(root_path=i_sample_location, extension_keyword=".nii.gz", output_channel_names=["Scan-2"])
+
+        # Check whether number of channels is correctly parsed
+        assert isinstance(sample.number_of_channels, int)
+        assert sample.number_of_channels == 3
+        assert sample.number_of_masks == 0
+        assert sample.number_of_output_channels == 1
+
+        assert isinstance(sample.channels, list)
+        assert len(sample.channels) == sample.number_of_channels
+        assert isinstance(sample.channel_names, list)
+        assert sample.channel_names == ["MASK-0", "Scan-0", "Scan-1"]
+
+        assert isinstance(sample.output_channels, list)
+        assert len(sample.output_channels) == sample.number_of_output_channels
+        assert isinstance(sample.output_channel_names, list)
+        assert sample.output_channel_names == ["Scan-2"]
+
+        for channel_name, channel in zip(sample.channel_names, sample.channels):
+            channel = sitk.GetArrayFromImage(channel)
+            sample_number = int(channel_name.split("-")[1])
+            if "MASK" in channel_name:
+                assert channel[:, sample_number, :] == pytest.approx(1)
+            else:
+                assert channel[sample_number, sample_number, sample_number] == pytest.approx(100)
+                assert channel[
+                    sample_number + 1, sample_number + 1, sample_number + 1
+                ] == pytest.approx(250)
+
+    for output_channel_name, output_channel in zip(sample.output_channel_names, sample.output_channels):
+        output_channel = sitk.GetArrayFromImage(output_channel)
+        sample_number = int(output_channel_name.split("-")[1])
+        if "MASK" in output_channel_name:
+            assert output_channel[:, sample_number, :] == pytest.approx(1)
+        else:
+            assert output_channel[sample_number, sample_number, sample_number] == pytest.approx(100)
+            assert output_channel[
+                sample_number + 1, sample_number + 1, sample_number + 1
+            ] == pytest.approx(250)
+
+@NIFTI_FILES
 def test_channel_example(datafiles):
     for i_sample_location in datafiles.listdir():
         sample = NIFTISample(root_path=i_sample_location, extension_keyword=".nii.gz",)
@@ -274,6 +317,16 @@ def test_masks_unequal_to_channels(datafiles):
 def test_size(datafiles):
     for i_sample_location in datafiles.listdir():
         sample = NIFTISample(root_path=i_sample_location, extension_keyword=".nii.gz")
+
+        assert isinstance(sample.channel_size, np.ndarray)
+        assert sample.channel_size == pytest.approx(np.asarray([30, 30, 30]))
+        assert sample.mask_size is None
+
+
+@NIFTI_FILES
+def test_output_channel_size(datafiles):
+    for i_sample_location in datafiles.listdir():
+        sample = NIFTISample(root_path=i_sample_location, extension_keyword=".nii.gz", output_channel_names=["Scan-2"])
 
         assert isinstance(sample.channel_size, np.ndarray)
         assert sample.channel_size == pytest.approx(np.asarray([30, 30, 30]))
@@ -406,7 +459,35 @@ def test_channel_modifying(datafiles):
             )
 
         sample.masks = sitk.Square
+        sample.output_channels = sitk.Square
 
+
+@NIFTI_FILES
+def test_channel_and_output_channel_modifying(datafiles):
+    for i_sample_location in datafiles.listdir():
+        sample = NIFTISample(root_path=i_sample_location, extension_keyword=".nii.gz", output_channel_names=["Scan-2"])
+
+        channels = sample.channels
+
+        sample.channels = sitk.Square
+
+        assert isinstance(sample.channels, list)
+
+        for i_i_channel, i_channel in enumerate(sample.channels):
+            assert sitk.GetArrayFromImage(i_channel) == pytest.approx(
+                np.power(sitk.GetArrayFromImage(channels[i_i_channel]), 2)
+            )
+
+        output_channels = sample.output_channels
+        sample.output_channels = sitk.Square
+
+        assert isinstance(sample.output_channels, list)
+
+        for i_i_output_channel, i_output_channel in enumerate(sample.output_channels):
+            assert sitk.GetArrayFromImage(i_output_channel) == pytest.approx(
+                np.power(sitk.GetArrayFromImage(output_channels[i_i_output_channel]), 2)
+            )
+        sample.masks = sitk.Square
 
 @NIFTI_FILES
 def test_channel_and_mask_modifying(datafiles):
