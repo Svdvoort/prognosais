@@ -19,5 +19,6 @@
   "python.venvFolders": [
     "${workspaceFolder}/.venv"
   ],
-  "python.pythonPath": ".venv/bin/python"
+  "python.pythonPath": ".venv/bin/python",
+  "restructuredtext.languageServer.disabled": true
 }

@@ -1591,7 +1591,7 @@ def test_patches_to_data_structure(datafiles):
 
     preprocessor = SingleSamplePreprocessor(i_sample, {"saving": {"use_mask_as_channel": False}})
 
-    npz_patch = preprocessor._patch_to_data_structure(channel_patches, None, i_sample.labels[0])
+    npz_patch = preprocessor._patch_to_data_structure(channel_patches, None, None, i_sample.labels[0])
 
     assert isinstance(npz_patch, dict)
 
@@ -1611,7 +1611,7 @@ def test_patches_to_data_structure(datafiles):
     preprocessor = SingleSamplePreprocessor(i_sample, {"saving": {"use_mask_as_channel": True}})
 
     npz_patch = preprocessor._patch_to_data_structure(
-        channel_patches, mask_patches, i_sample.labels[0]
+        channel_patches, None, mask_patches, i_sample.labels[0]
     )
 
     assert isinstance(npz_patch, dict)
@@ -1650,7 +1650,7 @@ def test_patches_to_data_structure(datafiles):
         i_sample, {"saving": {"use_mask_as_channel": False, "named_channels": True}}
     )
 
-    npz_patch = preprocessor._patch_to_data_structure(channel_patches, None, i_sample.labels[0])
+    npz_patch = preprocessor._patch_to_data_structure(channel_patches, None, None, i_sample.labels[0])
 
     assert isinstance(npz_patch, dict)
 
@@ -1695,7 +1695,7 @@ def test_patches_to_data_structure(datafiles):
     )
 
     npz_patch = preprocessor._patch_to_data_structure(
-        channel_patches, mask_patches, i_sample.labels[0]
+        channel_patches, None, mask_patches, i_sample.labels[0]
     )
 
     assert isinstance(npz_patch, dict)
@@ -1747,7 +1747,7 @@ def test_patches_to_data_structure(datafiles):
     preprocessor = SingleSamplePreprocessor(i_sample, {"saving": {"use_mask_as_label": True}})
 
     npz_patch = preprocessor._patch_to_data_structure(
-        channel_patches, mask_patches, i_sample.labels[0]
+        channel_patches, None, mask_patches, i_sample.labels[0]
     )
 
     assert isinstance(npz_patch, dict)
@@ -1792,7 +1792,7 @@ def test_patches_to_data_structure(datafiles):
     preprocessor = SingleSamplePreprocessor(temp_sample, {"saving": {"use_mask_as_label": False}})
 
     npz_patch = preprocessor._patch_to_data_structure(
-        channel_patches, mask_patches, temp_sample.labels[0]
+        channel_patches, None, mask_patches, temp_sample.labels[0]
     )
 
     assert isinstance(npz_patch, dict)
@@ -1834,7 +1834,7 @@ def test_patches_to_data_structure(datafiles):
     preprocessor = SingleSamplePreprocessor(temp_sample, {"saving": {"use_mask_as_label": False}})
 
     npz_patch = preprocessor._patch_to_data_structure(
-        channel_patches, mask_patches, temp_sample.labels[0]
+        channel_patches, None, mask_patches, temp_sample.labels[0]
     )
 
     assert isinstance(npz_patch, dict)
@@ -1881,7 +1881,7 @@ def test_patches_to_data_structure(datafiles):
     preprocessor = SingleSamplePreprocessor(temp_sample, {"saving": {"use_mask_as_label": True}})
 
     npz_patch = preprocessor._patch_to_data_structure(
-        channel_patches, mask_patches, temp_sample.labels[0]
+        channel_patches, None, mask_patches, temp_sample.labels[0]
     )
 
     assert isinstance(npz_patch, dict)
@@ -1928,7 +1928,7 @@ def test_patches_to_data_structure(datafiles):
     )
 
     npz_patch = preprocessor._patch_to_data_structure(
-        channel_patches, mask_patches, temp_sample.labels[0]
+        channel_patches, None, mask_patches, temp_sample.labels[0]
     )
 
     assert isinstance(npz_patch, dict)
@@ -1980,7 +1980,7 @@ def test_patches_to_data_structure(datafiles):
     )
 
     npz_patch = preprocessor._patch_to_data_structure(
-        channel_patches, mask_patches, temp_sample.labels[0]
+        channel_patches, None, mask_patches, temp_sample.labels[0]
     )
 
     assert isinstance(npz_patch, dict)
@@ -2037,14 +2037,14 @@ def test_get_number_of_classes(datafiles):
 
     preprocessor = SingleSamplePreprocessor(i_sample, {"saving": {"use_mask_as_channel": False}})
 
-    ds_structure = preprocessor._patch_to_data_structure(channel_patches, None, i_sample.labels[0])
+    ds_structure = preprocessor._patch_to_data_structure(channel_patches, None, None, i_sample.labels[0])
     number_of_classes = preprocessor._get_number_of_classes(ds_structure)
     assert number_of_classes is None
 
     preprocessor = SingleSamplePreprocessor(i_sample, {"saving": {"use_mask_as_label": True}})
 
     ds_structure = preprocessor._patch_to_data_structure(
-        channel_patches, mask_patches, i_sample.labels[0]
+        channel_patches, None, mask_patches, i_sample.labels[0]
     )
     number_of_classes = preprocessor._get_number_of_classes(ds_structure)
     assert number_of_classes == {PrognosAIs.Constants.LABEL_INDEX: 3}
@@ -2058,7 +2058,7 @@ def test_get_number_of_classes(datafiles):
     preprocessor = SingleSamplePreprocessor(temp_sample, {"saving": {"use_mask_as_channel": False}})
 
     ds_structure = preprocessor._patch_to_data_structure(
-        channel_patches, None, temp_sample.labels[0]
+        channel_patches, None, None, temp_sample.labels[0]
     )
     number_of_classes = preprocessor._get_number_of_classes(ds_structure)
     assert number_of_classes == {PrognosAIs.Constants.LABEL_INDEX: 2}
@@ -2072,7 +2072,7 @@ def test_get_number_of_classes(datafiles):
     preprocessor = SingleSamplePreprocessor(temp_sample, {"saving": {"use_mask_as_channel": False}})
 
     ds_structure = preprocessor._patch_to_data_structure(
-        channel_patches, None, temp_sample.labels[0]
+        channel_patches, None, None, temp_sample.labels[0]
     )
     number_of_classes = preprocessor._get_number_of_classes(ds_structure)
     assert number_of_classes == label_classes
@@ -2086,7 +2086,7 @@ def test_get_number_of_classes(datafiles):
     preprocessor = SingleSamplePreprocessor(temp_sample, {"saving": {"use_mask_as_label": True}})
 
     ds_structure = preprocessor._patch_to_data_structure(
-        channel_patches, mask_patches, temp_sample.labels[0]
+        channel_patches, None, mask_patches, temp_sample.labels[0]
     )
     number_of_classes = preprocessor._get_number_of_classes(ds_structure)
     assert number_of_classes == {"label_1": 2, "label_2": 3, "MASK": 3}
@@ -2100,7 +2100,7 @@ def test_get_number_of_classes(datafiles):
     preprocessor.sample._masks = {"MASK-0": 0, "MASK-1": 0}
 
     ds_structure = preprocessor._patch_to_data_structure(
-        channel_patches, [mask_channel, mask_channel], temp_sample.labels[0]
+        channel_patches, None, [mask_channel, mask_channel], temp_sample.labels[0]
     )
     number_of_classes = preprocessor._get_number_of_classes(ds_structure)
     assert number_of_classes == {"MASK-0": 3, "MASK-1": 3}
@@ -2219,7 +2219,6 @@ def test_saving(datafiles):
     preprocessor.saving()
     assert os.path.exists(os.path.join(tmpdir, "Samples"))
     assert len(os.listdir(os.path.join(tmpdir, "Samples"))) == 0
-
 
 @NIFTI_FILES
 def test_saving_patches(datafiles):
@@ -2589,6 +2588,28 @@ def test_batch_single_sample(datafiles):
     assert isinstance(save_names[0], str)
     assert isinstance(sample_labels, dict)
     assert sample_labels["Label"] == 1
+
+
+@NIFTI_FILES
+def test_batch_single_sample_with_output_channels(datafiles):
+    tmp = tempfile.mkdtemp()
+
+    batch_preprocessor = BatchPreprocessor(
+        os.path.join(FIXTURE_DIR, "SAMPLES"),
+        tmp,
+        {"general": {"sample_type": "nifti", "output_channel_names": ["Scan-2"]}, "saving": {"type": "image"}},
+    )
+    single_sample_folder = sorted(list(datafiles.listdir()))[0]
+    save_names, sample_labels = batch_preprocessor._run_single_sample(single_sample_folder)
+    assert isinstance(save_names, list)
+    assert isinstance(save_names[0], str)
+    assert sample_labels == {}
+
+
+    loaded_sample = h5py.File(save_names[0], "r")
+    label_keys = [i_key for i_key in loaded_sample[PrognosAIs.Constants.LABEL_INDEX].keys()]
+    assert label_keys == ["Scan-2"]
+    assert np.asarray(loaded_sample[PrognosAIs.Constants.FEATURE_INDEX][PrognosAIs.Constants.FEATURE_INDEX]).shape == (30, 30, 30, 3)
 
 
 def test_batch_running():

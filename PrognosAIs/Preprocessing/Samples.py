@@ -57,6 +57,9 @@ class ImageSample(ABC):
         self.sample_name = IO_utils.get_root_name(self.root_path)
         self.output_channel_names = output_channel_names
 
+        for i_output_channel_name in self.output_channel_names:
+            self.number_of_label_classes[i_output_channel_name] = -1
+
         if extension_keyword is not None:
             self.image_extension = extension_keyword
         else:
@@ -115,6 +118,7 @@ class ImageSample(ABC):
             labels=self.labels,
             number_of_label_classes=self.number_of_label_classes,
             are_labels_one_hot=self.are_labels_one_hot,
+            output_channel_names=self.output_channel_names
         )
 
     def _perform_sanity_checks(self):
@@ -821,6 +825,33 @@ class ImageSample(ABC):
 
         return grouped_channels
 
+    def get_grouped_output_channels(self) -> list:
+        """
+        Groups the output channels on a per-patch basis instead of a per-channel basis
+
+        The channels property indexes first by channel and then by (possibly) patches.
+        This function instead first indexes by patches (or the whole sample of no patches).
+        This can be handy when all channels are needed at the same time
+
+        Returns:
+            list: Grouped channels for each patch
+        """
+
+        grouped_output_channels = []
+        if self.has_patches:
+            output_channels = self.output_channels
+            for i_patch in range(self.number_of_output_channels):
+                grouped_output_channels.append(
+                    [output_channels[i_output_channel][i_patch] for i_output_channel in range(self.number_of_output_channels)]
+                )
+        elif self.output_channels:
+            grouped_output_channels.append(self.output_channels)
+        else:
+            # We dont have any channels
+            grouped_output_channels = []
+
+        return grouped_output_channels
+
     def get_grouped_masks(self) -> list:
         """
         Groups the masks on a per-patch basis instead of a per-channel basis
@@ -998,7 +1029,8 @@ class ImageSample(ABC):
 
 class NIFTISample(ImageSample):
     def __init__(self, **kwds):
-        self.image_extension = ".nii"
+        if "extension_keyword" not in kwds:
+            kwds["extension_keyword"] = ".nii"
         super().__init__(**kwds)
 
     def load_channels(self, channel_files):

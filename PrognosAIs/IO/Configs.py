@@ -63,6 +63,7 @@ class general_config(config):
 
         self.mask_keyword = "mask"
         self.max_cpus = 999
+        self.output_channel_names=[]
         super().__init__(general_config)
 
 
@@ -73,6 +74,7 @@ class multi_dimension_extracting_config(config):
         self.perform_step_on_image = True
         self.perform_step_on_patch = False
         self.extract_masks = False
+        self.apply_to_output = False
 
         super().__init__(config_settings)
 
@@ -83,6 +85,7 @@ class masking_config(config):
         self.crop_to_mask = False
         self.background_value = 0.0
         self.process_masks = True
+        self.apply_to_output = False
         self._mask_file = None
         self._mask = None
 
@@ -116,6 +119,7 @@ class masking_config(config):
 class resampling_config(config):
     def __init__(self, config_settings: dict):
         self.resample_size = [0, 0, 0]
+        self.apply_to_output = False
         (
             self.perform_step_on_image,
             self.perform_step_on_patch,
@@ -134,6 +138,7 @@ class normalizing_config(config):
         self.mask_normalization = None
         self.normalization_method = None
         self.mask_smoothing = False
+        self.apply_to_output = False
 
         (
             self.perform_step_on_image,
@@ -165,6 +170,7 @@ class normalizing_config(config):
 
 class bias_field_correcting_config(config):
     def __init__(self, config_settings: dict):
+        self.apply_to_output = False
         self._mask_file = None
         self._mask = None
 
@@ -208,6 +214,8 @@ class patching_config(config):
         self.perform_step_on_image = True
         self.perform_step_on_patch = False
 
+        self.apply_to_output = False
+
         super().__init__(config_settings)
 
     @property
@@ -223,6 +231,7 @@ class rejecting_config(config):
     def __init__(self, config_settings: dict):
         self.rejection_limit = 0
         self.rejection_as_label = False
+        self.apply_to_output = False
         self._mask_file = None
         self._mask = None
         (

@@ -109,6 +109,9 @@ class SingleSamplePreprocessor:
             if self.multi_dimension_extracting_config.extract_masks:
                 self.sample.masks = (extraction_fuction, [max_dims])
 
+            if self.multi_dimension_extracting_config.apply_to_output:
+                self.sample.output_channels = (extraction_fuction, [max_dims])
+
     @staticmethod
     def _get_first_image_from_sequence(image: sitk.Image, max_dims: int) -> sitk.Image:
         """
@@ -179,21 +182,29 @@ class SingleSamplePreprocessor:
                 self.masking_config.mask,
                 self.masking_config.background_value,
                 self.masking_config.process_masks,
+                self.masking_config.apply_to_output
             )
         if self.masking_config.crop_to_mask:
-            self.crop_to_mask(self.masking_config.mask, self.masking_config.process_masks)
+            self.crop_to_mask(self.masking_config.mask, self.masking_config.process_masks, self.masking_config.apply_to_output)
 
     def mask_background(
         self, ROI_mask: sitk.Image, background_value: float = 0.0, process_masks: bool = True,
+        apply_to_output: bool = False
     ):
         mask_image_filter = sitk.MaskImageFilter()
 
         mask_image_filter.SetMaskingValue(0)
         if background_value == "min":
             self.sample.channels = (self.mask_background_to_min, [ROI_mask])
+            if apply_to_output:
+                self.sample.output_channels = (self.mask_background_to_min, [ROI_mask])
+
         else:
             mask_image_filter.SetOutsideValue(background_value)
             self.sample.channels = (mask_image_filter.Execute, [ROI_mask])
+            if apply_to_output:
+                self.sample.output_channels = (mask_image_filter.Execute, [ROI_mask])
+
         if process_masks:
             # background_dtype = ImageSample.get_appropiate_dtype_from_scalar(background_value)
             # if background_dtype != self.sample.get_example_mask().GetPixelID():
@@ -215,7 +226,7 @@ class SingleSamplePreprocessor:
         image = sitk.Mask(image, mask, img_min)
         return image
 
-    def crop_to_mask(self, ROI_mask: sitk.Image, process_masks: bool = True):
+    def crop_to_mask(self, ROI_mask: sitk.Image, process_masks: bool = True, apply_to_output: bool = False):
         statics_image_filter = sitk.LabelShapeStatisticsImageFilter()
         statics_image_filter.Execute(ROI_mask)
 
@@ -253,6 +264,12 @@ class SingleSamplePreprocessor:
             [self.resampling_config.resample_size, mask_resampler],
         )
 
+        if self.resampling_config.apply_to_output:
+            self.sample.output_channels = (
+                self._resample,
+                [self.resampling_config.resample_size, channel_resampler],
+            )
+
     @staticmethod
     def _resample(image, resample_size, resampler):
         original_size = np.asarray(image.GetSize())
@@ -287,6 +304,15 @@ class SingleSamplePreprocessor:
                     self.normalizing_config.output_range,
                 ],
             )
+            if self.normalizing_config.apply_to_output:
+                self.sample.output_channels = (
+                    self._rescale_image_intensity_range,
+                    [
+                        self.normalizing_config.normalization_range,
+                        self.normalizing_config.output_range,
+                    ],
+                )
+
         elif (
             self.normalizing_config.normalization_method == "range"
             and self.normalizing_config.mask is not None
@@ -299,11 +325,23 @@ class SingleSamplePreprocessor:
                     self.normalizing_config.output_range,
                 ],
             )
+            if self.normalizing_config.apply_to_output:
+                self.sample.output_channels = (
+                    self._rescale_image_intensity_range_with_mask,
+                    [
+                        self.normalizing_config.mask,
+                        self.normalizing_config.normalization_range,
+                        self.normalizing_config.output_range,
+                    ],
+            )
+
         elif (
             self.normalizing_config.normalization_method == "zscore"
             and self.normalizing_config.mask is None
         ):
             self.sample.channels = self._zscore_image_intensity
+            if self.normalizing_config.apply_to_output:
+                self.sample.output_channels = self._zscore_image_intensity
         elif (
             self.normalizing_config.normalization_method == "zscore"
             and self.normalizing_config.mask is not None
@@ -312,6 +350,11 @@ class SingleSamplePreprocessor:
                 self._zscore_image_intensity_with_mask,
                 [self.normalizing_config.mask],
             )
+            if self.normalizing_config.apply_to_output:
+                self.sample.output_channels = (
+                    self._zscore_image_intensity_with_mask,
+                    [self.normalizing_config.mask],
+                )
 
         if self.normalizing_config.mask_normalization == "collapse":
             self.sample.masks = self._collapse_mask
@@ -479,6 +522,12 @@ class SingleSamplePreprocessor:
             self._make_patches,
             [patch_parameters, 0, self.patching_config.patch_size],
         )
+
+        if self.patching_config.apply_to_output:
+            self.sample.output_channels = (
+                self._make_patches,
+                [patch_parameters, self.patching_config.pad_constant, self.patching_config.patch_size],
+            )
 
     def _get_patch_parameters(self) -> dict:
         patch_parameters = {}
@@ -669,6 +718,8 @@ class SingleSamplePreprocessor:
         else:
             self.sample.channels = (self._get_accepted_patches, [rejection_status])
             self.sample.masks = (self._get_accepted_patches, [rejection_status])
+            if self.rejecting_config.apply_to_output:
+                self.sample.output_channels = (self._get_accepted_patches, [rejection_status])
 
             return self.sample.number_of_patches > 0
 
@@ -710,6 +761,8 @@ class SingleSamplePreprocessor:
             bias_field_corrector.SetUseMaskLabel(False)
             args = []
         self.sample.channels = (bias_field_corrector.Execute, args)
+        if self.bias_field_correcting_config.apply_to_output:
+            self.sample.output_channels = (bias_field_corrector.Execute, args)
 
     # ===============================================================
     # Saving
@@ -735,7 +788,7 @@ class SingleSamplePreprocessor:
         return np_array
 
     def _patch_to_data_structure(
-        self, patch_channels: list, patch_masks: list, patch_labels: list
+        self, patch_channels: list, patch_output_channels: list, patch_masks: list, patch_labels: list
     ) -> dict:
         N_channels = len(patch_channels)
         patch_channels = self._convert_sitk_arrays_to_numpy(patch_channels)
@@ -745,11 +798,19 @@ class SingleSamplePreprocessor:
         else:
             N_masks = 0
 
+        if patch_output_channels is not None:
+            N_output_channels = len(patch_output_channels)
+            patch_output_channels = self._convert_sitk_arrays_to_numpy(patch_output_channels)
+        else:
+            N_output_channels = 0
+
         if self.saving_config.impute_missing_channels:
             patch_channels = self.channel_imputation(patch_channels)
 
         if self.saving_config.save_as_float16:
             patch_channels = self.channels_to_float16(patch_channels)
+            if N_output_channels > 0:
+                patch_output_channels = self.channels_to_float16(patch_output_channels)
 
         if self.saving_config.use_mask_as_channel and patch_masks is not None:
             patch_names = self.sample.channel_names + self.sample.mask_names
@@ -787,7 +848,7 @@ class SingleSamplePreprocessor:
                 data_structure[self.saving_config.label_npz_keyword] = dict(
                     zip(self.sample.mask_names, np.split(patch_masks, N_masks, axis=-1),)
                 )
-            elif len(patch_labels) > 0:
+            elif len(patch_labels) > 0 or N_output_channels > 0:
                 # If we have other labels as well we ensure that we
                 # Give a name to the mask, as we have multi-outputs
                 data_structure[self.saving_config.label_npz_keyword] = {
@@ -818,6 +879,19 @@ class SingleSamplePreprocessor:
                 data_structure[self.saving_config.label_npz_keyword] = {
                     self.saving_config.label_npz_keyword: patch_labels[label_keys[0]]
                 }
+
+        if N_output_channels > 0:
+            output_channel_structure = dict(
+                zip(self.sample.output_channel_names, np.split(patch_output_channels, N_output_channels, axis=-1),)
+            )
+            if len(patch_labels) > 0 or self.saving_config.use_mask_as_label:
+                # If we have other labels as well we ensure that we
+                # Give a name to the mask, as we have multi-outputs
+                data_structure[self.saving_config.label_npz_keyword].update(output_channel_structure)
+            else:
+                data_structure[self.saving_config.label_npz_keyword] = output_channel_structure
+
+
         return data_structure
 
     def _get_number_of_classes(self, data_structure: dict):
@@ -932,6 +1006,11 @@ class SingleSamplePreprocessor:
         # First convert to a dict for easy saving in npz format
         sample_channels = self.sample.get_grouped_channels()
 
+        if self.sample.has_output_channels:
+            sample_output_channels = self.sample.get_grouped_output_channels()
+        else:
+            sample_output_channels = [None] * len(sample_channels)
+
         if self.sample.has_masks:
             sample_masks = self.sample.get_grouped_masks()
         else:
@@ -941,11 +1020,11 @@ class SingleSamplePreprocessor:
         sample_labels = self.sample.labels
 
         data_structure_patches = []
-        for i_channel_patch, i_mask_patch, i_label_patch in zip(
-            sample_channels, sample_masks, sample_labels
+        for i_channel_patch, i_output_channel_patch, i_mask_patch, i_label_patch in zip(
+            sample_channels, sample_output_channels, sample_masks, sample_labels
         ):
             data_structure_patches.append(
-                self._patch_to_data_structure(i_channel_patch, i_mask_patch, i_label_patch)
+                self._patch_to_data_structure(i_channel_patch, i_output_channel_patch, i_mask_patch, i_label_patch)
             )
 
         if data_structure_patches:
@@ -1003,7 +1082,7 @@ class BatchPreprocessor:
 
     def _run_single_sample(self, sample_directory: str):
         sample = self.sample_class(
-            root_path=sample_directory, mask_keyword=self.general_config.mask_keyword
+            root_path=sample_directory, mask_keyword=self.general_config.mask_keyword, output_channel_names=self.general_config.output_channel_names
         )
         print(sample.sample_name)
 
