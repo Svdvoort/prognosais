@@ -19,6 +19,7 @@ class ImageSample(ABC):
 
         * `init_image_files`: Contains logic for retrieval of channel filepaths
         * `load_channels`: Contains logic for loading of channels from filepaths
+        * `load_output_channels`: Contains logic for loading of output channels from filepaths
         * `load_masks`: Contains logic of loading masks from filepaths
 
     Args:
@@ -37,6 +38,7 @@ class ImageSample(ABC):
         labels: dict = None,
         number_of_label_classes: dict = None,
         are_labels_one_hot: bool = False,
+        output_channel_names: list = [],
     ):
         self.root_path = copy.deepcopy(root_path)
         if isinstance(labels, dict):
@@ -53,26 +55,36 @@ class ImageSample(ABC):
         self.are_labels_one_hot = copy.deepcopy(are_labels_one_hot)
         self.mask_keyword = mask_keyword
         self.sample_name = IO_utils.get_root_name(self.root_path)
+        self.output_channel_names = output_channel_names
 
         if extension_keyword is not None:
             self.image_extension = extension_keyword
+        else:
+            self.image_extension = ""
         self.image_files = self.init_image_files()
 
         self.channel_files = self._init_channel_files(self.image_files)
+        self.output_channel_files = self._init_output_channel_files(self.image_files)
         self.mask_files = self._init_mask_files(self.image_files)
         self.number_of_channels = len(self.channel_files)
+        self.number_of_output_channels = len(self.output_channel_files)
         self.number_of_masks = len(self.mask_files)
 
         self._channels = self.load_channels(self.channel_files)
+        self._output_channels = self.load_channels(self.output_channel_files)
         self._masks = self.load_masks(self.mask_files)
 
         self.has_patches = False
         self.number_of_patches = 0
+        self.number_of_output_patches = 0
         self.has_masks = self.number_of_masks > 0
+        self.has_output_channels = self.number_of_output_channels > 0
         self._channel_patches = False
+        self._output_channel_patches = False
         self._mask_patches = False
 
         self.update_channel_size()
+        self.update_output_channel_size()
         self.update_mask_size()
 
         self._perform_sanity_checks()
@@ -135,6 +147,19 @@ class ImageSample(ABC):
             is_mask_file = self.mask_keyword in IO_utils.get_root_name(image_file)
 
         return is_mask_file
+
+    def _identify_output_channel_file(self, image_file: str) -> bool:
+        """
+        Identify whether an image file is a output channel
+
+        Args:
+            image_file: Image file to check
+
+        Returns:
+            bool: True if image_file is output channel, False otherwise
+        """
+
+        return IO_utils.get_file_name(image_file, self.image_extension) in self.output_channel_names
 
     @abstractmethod
     def init_image_files(self) -> list:
@@ -214,9 +239,33 @@ class ImageSample(ABC):
         channel_files = [
             i_image_file
             for i_image_file in image_files
-            if not self._identify_mask_file(i_image_file)
+            if (
+                not self._identify_mask_file(i_image_file)
+                and not self._identify_output_channel_file(i_image_file)
+            )
         ]
         return channel_files
+
+    def _init_output_channel_files(self, image_files: list) -> list:
+        """
+        Get the output channel files from the image files.
+
+        Args:
+            image_files (list): Paths to the image files
+
+        Returns:
+            list: The paths to the output channel files
+        """
+
+        output_channel_files = [
+            i_image_file
+            for i_image_file in image_files
+            if (
+                not self._identify_mask_file(i_image_file)
+                and self._identify_output_channel_file(i_image_file)
+            )
+        ]
+        return output_channel_files
 
     def _init_mask_files(self, image_files: list) -> list:
         """
@@ -255,6 +304,29 @@ class ImageSample(ABC):
         else:
             self.channel_size = None
             self.number_of_dimensions = None
+
+    @property
+    def output_channel_size(self) -> np.ndarray:
+        """
+        The image size of the channels
+        """
+        return self._output_channel_size
+
+    @output_channel_size.setter
+    def output_channel_size(self, output_channel_size):
+        self._output_channel_size = np.asarray(output_channel_size)
+
+    def update_output_channel_size(self):
+        """
+        Update the channel size according to the current channels
+        """
+        example_channel = self.get_example_output_channel()
+        if example_channel is not None:
+            self.output_channel_size = example_channel.GetSize()
+            self.output_number_of_dimensions = len(example_channel.GetSize())
+        else:
+            self.output_channel_size = None
+            self.output_number_of_dimensions = None
 
     @property
     def mask_size(self) -> Union[np.ndarray, None]:
@@ -393,9 +465,11 @@ class ImageSample(ABC):
 
     @channels.setter
     def channels(self, function_parameters):
-        (function, function_arguments, function_kw_arguments,) = self._parse_function_parameters(
-            function_parameters
-        )
+        (
+            function,
+            function_arguments,
+            function_kw_arguments,
+        ) = self._parse_function_parameters(function_parameters)
 
         example_function_output = function(
             self.get_example_channel(), *function_arguments, **function_kw_arguments
@@ -430,6 +504,67 @@ class ImageSample(ABC):
         self.update_channel_size()
         self.update_metadata()
         self.update_labels()
+
+    @property
+    def output_channels(self) -> list:
+        """
+        The output channels present in the sample
+
+        Output channels of a sample can be set by providing either a function,
+         or a tuple consisting of a function, possible function argument
+         and function keyword arguments.
+        This function will then be applied to all output channels in the sample.
+        The function has to output either a SimpleITK Image or a list.
+        In the last case it is assumed that these are patches and the class is updated accordingly
+
+
+        Returns:
+            list: Channels present in the sample
+        """
+        return [value for key, value in sorted(self._output_channels.items(), key=lambda item: item[0])]
+
+    @output_channels.setter
+    def output_channels(self, function_parameters):
+        if self.has_output_channels:
+            (
+                function,
+                function_arguments,
+                function_kw_arguments,
+            ) = self._parse_function_parameters(function_parameters)
+
+            example_function_output = function(
+                self.get_example_output_channel(), *function_arguments, **function_kw_arguments
+            )
+            returns_patches = isinstance(example_function_output, list)
+
+            if self._output_channel_patches and not returns_patches:
+                for i_output_channel_name in self.output_channel_names:
+                    for i_i_patch, i_patch in enumerate(self._output_channels[i_output_channel_name]):
+                        self._output_channels[i_output_channel_name][i_i_patch] = function(
+                            i_patch, *function_arguments, **function_kw_arguments
+                        )
+            else:
+                output_channel_items = sorted(self._output_channels.items(), key=lambda item: item[0])
+                if not returns_patches:
+                    # We already have the first example, so we can use it for efficiency
+                    # If the function does return patches we should pass all patches at once
+                    # So we still need to calculate the output
+                    self._output_channels[output_channel_items[0][0]] = example_function_output
+                    output_channel_items = output_channel_items[1:]
+                for i_output_channel_name, i_output_channel in output_channel_items:
+                    self._output_channels[i_output_channel_name] = function(
+                        i_output_channel, *function_arguments, **function_kw_arguments
+                    )
+
+            if returns_patches:
+                self.has_patches = True
+                self._output_channel_patches = True
+                self.number_of_output_patches = len(self.get_example_output_channel_patches())
+                self._number_of_output_channel_patches = len(self.get_example_output_channel_patches())
+
+            self.update_output_channel_size()
+            self.update_metadata()
+            self.update_labels()
 
     @property
     def masks(self):
@@ -520,6 +655,27 @@ class ImageSample(ABC):
             return None
         return sitk.Image(example)
 
+    def get_example_output_channel(self) -> sitk.Image:
+        """
+        Provides an example output channel of the samples
+
+        Returns:
+            sitk.Image: Single channel of the sample
+        """
+
+        if self.has_output_channels:
+            example = self.output_channels[0]
+            if self._output_channel_patches and self._number_of_output_channel_patches > 0:
+                example = example[0]
+            elif self._output_channel_patches:
+                # If we removed all patches, we will return None
+                return None
+            example = sitk.Image(example)
+        else:
+            example = None
+
+        return example
+
     def get_example_mask(self) -> sitk.Image:
         """
         Provides an example mask of the samples
@@ -549,6 +705,25 @@ class ImageSample(ABC):
 
         temp_example = self.channels[0]
         if not self._channel_patches:
+            temp_example = [temp_example]
+
+        # We ensure we make a copy so no operations are done on the
+        # real sample
+        example = []
+        for i_patch in temp_example:
+            example.append(sitk.Image(i_patch))
+        return example
+
+    def get_example_output_channel_patches(self) -> list:
+        """
+        Provides an example of all patches of a output channel, even if there is only one patch
+
+        Returns:
+            list: Patch(es) of a single output channel of the sample
+        """
+
+        temp_example = self.output_channels[0]
+        if not self._output_channel_patches:
             temp_example = [temp_example]
 
         # We ensure we make a copy so no operations are done on the
