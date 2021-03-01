@@ -598,9 +598,17 @@ class SingleSamplePreprocessor:
         )
 
         patches = []
-        patch_size = patch_size.tolist()
-        patch_filter = sitk.RegionOfInterestImageFilter()
-        patch_filter.SetSize(patch_size)
+        if np.any(patch_size == np.asarray(1)):
+            # If there is a direction with patch size 1, we actually want to remove
+            # that direction, so need to use extractimagefilter
+            patch_size = np.where(patch_size == np.asarray(1), 0, patch_size)
+            patch_size = patch_size.tolist()
+            patch_filter = sitk.ExtractImageFilter()
+            patch_filter.SetSize(patch_size)
+        else:
+            patch_size = patch_size.tolist()
+            patch_filter = sitk.RegionOfInterestImageFilter()
+            patch_filter.SetSize(patch_size)
 
         for i_patch_index in patch_parameters["patch_indices"]:
             patch_filter.SetIndex(i_patch_index.tolist())
@@ -642,6 +650,7 @@ class SingleSamplePreprocessor:
         # Spacing is determined by the patch size, and the possible missed voxels
         # because patches dont fit perfectly
         between_patch_spacing = patch_size + np.mod(sample_size, patch_size)/(patches_per_dim -1)
+        between_patch_spacing = np.nan_to_num(between_patch_spacing)
         patch_indices = patch_indice_numbers * between_patch_spacing
         patch_indices = np.floor(patch_indices).astype(np.int)
         return patch_indices

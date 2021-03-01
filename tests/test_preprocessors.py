@@ -1301,6 +1301,40 @@ def test_patching(datafiles):
         assert preprocessor.sample.number_of_patches == 10
 
 
+@NIFTI_FILES
+def test_patching_2D(datafiles):
+    samples = get_samples(datafiles)
+
+    for i_sample in samples:
+        # Overlap
+        original_sample_channel = sitk.GetArrayFromImage(i_sample.get_example_channel())
+        preprocessor = SingleSamplePreprocessor(
+            i_sample,
+            {
+                "patching": {
+                    "patch_size": [30, 30, 1],
+                    "pad_if_needed": True,
+                    "pad_constant": 0,
+                    "extraction_type": "fitting",
+                }
+            },
+        )
+
+        preprocessor.patching()
+
+        assert preprocessor.sample.has_patches
+        assert preprocessor.sample.number_of_patches == 30
+
+        # Make sure that the patches are indeed the slices
+
+        sample_patches = preprocessor.sample.get_example_channel_patches()
+        for i_i_patch, i_patch in enumerate(sample_patches):
+            i_patch = sitk.GetArrayFromImage(i_patch)
+
+            assert i_patch == pytest.approx(original_sample_channel[i_i_patch, :, :])
+
+
+
 # ===============================================================
 # Rejecting
 # ===============================================================
