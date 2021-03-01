@@ -596,6 +596,8 @@ class Evaluator:
         original_image_direction = self.sample_metadata[input_name]["original_direction"]
         original_image_origin = self.sample_metadata[input_name]["original_origin"]
         original_image_spacing = self.sample_metadata[input_name]["original_spacing"]
+        if image_array.shape[-1] == 1 and len(original_image_direction) > len(image_array.shape):
+            image_array = np.squeeze(image_array, axies=-1)
         img = sitk.GetImageFromArray(image_array)
         img.SetDirection(original_image_direction)
         img.SetOrigin(original_image_origin)
