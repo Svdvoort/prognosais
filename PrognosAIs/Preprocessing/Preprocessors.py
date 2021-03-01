@@ -1079,6 +1079,7 @@ class BatchPreprocessor:
         self._CLASS_WEIGHT_FILE = "class_weights.json"
 
         self.labeling_config = PrognosAIs.IO.Configs.labeling_config(config)
+        self.saving_config = PrognosAIs.IO.Configs.saving_config(config)
         if self.labeling_config.perform_step and self.labeling_config.label_file is not None:
             self.label_loader = PrognosAIs.IO.LabelParser.LabelLoader(
                 self.labeling_config.label_file,
