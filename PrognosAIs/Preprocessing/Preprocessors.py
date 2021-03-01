@@ -1082,7 +1082,7 @@ class BatchPreprocessor:
 
     def _run_single_sample(self, sample_directory: str):
         sample = self.sample_class(
-            root_path=sample_directory, mask_keyword=self.general_config.mask_keyword, output_channel_names=self.general_config.output_channel_names
+            root_path=sample_directory, mask_keyword=self.general_config.mask_keyword, output_channel_names=self.general_config.output_channel_names, input_channel_names=self.saving_config.channel_names
         )
         print(sample.sample_name)
 

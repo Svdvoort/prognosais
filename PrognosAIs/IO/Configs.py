@@ -275,7 +275,7 @@ class saving_config(config):
         self.save_as_float16 = False
         self.float16_percentage_diff = 0.1
         self.combine_labels = False
-        self.channel_names = None
+        self.channel_names = []
         self.mask_channels = 0
         (
             self.perform_step_on_image,

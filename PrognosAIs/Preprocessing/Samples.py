@@ -39,6 +39,7 @@ class ImageSample(ABC):
         number_of_label_classes: dict = None,
         are_labels_one_hot: bool = False,
         output_channel_names: list = [],
+        input_channel_names: list = []
     ):
         self.root_path = copy.deepcopy(root_path)
         if isinstance(labels, dict):
@@ -56,6 +57,7 @@ class ImageSample(ABC):
         self.mask_keyword = mask_keyword
         self.sample_name = IO_utils.get_root_name(self.root_path)
         self.output_channel_names = output_channel_names
+        self.input_channel_names = input_channel_names
 
         for i_output_channel_name in self.output_channel_names:
             self.number_of_label_classes[i_output_channel_name] = -1
@@ -118,7 +120,8 @@ class ImageSample(ABC):
             labels=self.labels,
             number_of_label_classes=self.number_of_label_classes,
             are_labels_one_hot=self.are_labels_one_hot,
-            output_channel_names=self.output_channel_names
+            output_channel_names=self.output_channel_names,
+            input_channel_names=self.input_channel_names
         )
 
     def _perform_sanity_checks(self):
@@ -133,6 +136,23 @@ class ImageSample(ABC):
             err_str = """Expect the number of masks to either be 0, 1 or equal to the number
              of channels but got {}!\nNumber of channels: {}"""
             raise NotImplementedError(err_str.format(self.number_of_masks, self.number_of_channels))
+
+    def _identify_channel_file(self, image_file: str) -> bool:
+        """
+        Identify whether an image file should be included as channel
+
+        Args:
+            image_file: Image file to check
+
+        Returns:
+            bool: True if image_file is channel, False otherwise
+        """
+
+        if len(self.input_channel_names) == 0:
+            return True
+        else:
+            return IO_utils.get_file_name(image_file, self.image_extension) in self.input_channel_names
+
 
     def _identify_mask_file(self, image_file: str) -> bool:
         """
@@ -246,6 +266,7 @@ class ImageSample(ABC):
             if (
                 not self._identify_mask_file(i_image_file)
                 and not self._identify_output_channel_file(i_image_file)
+                and self._identify_channel_file(i_image_file)
             )
         ]
         return channel_files

@@ -2288,6 +2288,55 @@ def test_saving_imputed_channels(datafiles):
     assert sample_channnels.attrs["N_channels"] == 4
     assert sample_channnels.dtype.name == "float32"
 
+@NIFTI_FILES
+def test_saving_specific_channels(datafiles):
+    tmpdir = tempfile.mkdtemp()
+
+    samples=[]
+    for i_sample_location in datafiles.listdir():
+        samples.append(
+            NIFTISample(
+                root_path=i_sample_location, extension_keyword=".nii.gz", mask_keyword="MASK", input_channel_names=["Scan-0", "Scan-1"]
+            )
+        )
+
+    sample = samples[0]
+    preprocessor = SingleSamplePreprocessor(
+        sample,
+        {
+            "saving": {
+                "use_mask_as_channel": False,
+                "impute_missing_channels": False,
+                "channel_names": ["Scan-0", "Scan-1"],
+            }
+        },
+        output_directory=tmpdir
+    )
+
+    preprocessor.saving()
+    assert os.path.exists(os.path.join(tmpdir, "Samples"))
+    assert len(os.listdir(os.path.join(tmpdir, "Samples"))) == 1
+    assert os.path.exists(
+        os.path.join(tmpdir, "Samples", sample.sample_name + "_patch_0.hdf5")
+    )
+
+    loaded_sample = h5py.File(
+        os.path.join(tmpdir, "Samples", sample.sample_name + "_patch_0.hdf5"), "r"
+    )
+    assert list(loaded_sample.keys()) == [
+        PrognosAIs.Constants.FEATURE_INDEX,
+        PrognosAIs.Constants.LABEL_INDEX,
+    ]
+    sample = loaded_sample.get(PrognosAIs.Constants.FEATURE_INDEX)
+
+    assert list(sample.keys()) == [PrognosAIs.Constants.FEATURE_INDEX]
+    sample = sample.get(PrognosAIs.Constants.FEATURE_INDEX)
+    assert sample.dtype.name == "float32"
+    assert sample.attrs["size"] == pytest.approx(np.asarray([30, 30, 30]))
+    assert sample.attrs["dimensionality"] == 3
+    assert sample.attrs["N_channels"] == 2
+
+
 
 @NIFTI_FILES
 def test_save_float16(datafiles):
