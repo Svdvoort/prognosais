@@ -264,7 +264,7 @@ class rejecting_config(config):
 
 class saving_config(config):
     def __init__(self, config_settings: dict):
-        if "saving" in config_settings:
+        if isinstance(config_settings, dict) and "saving" in config_settings:
             config_settings = copy.deepcopy(config_settings)
             config_settings = config_settings.pop("saving")
         self.use_mask_as_channel = False
