@@ -2518,6 +2518,24 @@ def test_number_of_samples_in_subsets():
     assert N_val == 8
 
 
+@NIFTI_FILES
+def test_batch_preprocessor_with_specific_channels(datafiles):
+    tmpdir = tempfile.mkdtemp()
+
+    preprocessor = BatchPreprocessor(
+        datafiles,
+        tmpdir,
+        {
+            "general": {"sample_type": "nifti"},
+            "saving": {"channel_names": ["Scan-0"]},
+        },
+    )
+
+    assert preprocessor.saving_config.channel_names == ["Scan-0"]
+
+
+
+
 def test_get_subset():
     tmpdir = tempfile.mkdtemp()
     preprocessor = BatchPreprocessor(
