@@ -861,7 +861,7 @@ class ImageSample(ABC):
         grouped_output_channels = []
         if self.has_patches:
             output_channels = self.output_channels
-            for i_patch in range(self.number_of_output_channels):
+            for i_patch in range(self.number_of_patches):
                 grouped_output_channels.append(
                     [output_channels[i_output_channel][i_patch] for i_output_channel in range(self.number_of_output_channels)]
                 )
