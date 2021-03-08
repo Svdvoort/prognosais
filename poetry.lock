@@ -329,7 +329,7 @@ asttokens = ">=2"
 
 [[package]]
 name = "flake8-annotations"
-version = "2.5.0"
+version = "2.6.0"
 description = "Flake8 Type Annotation Checks"
 category = "dev"
 optional = false
@@ -1250,7 +1250,7 @@ dev = ["pre-commit", "tox"]
 
 [[package]]
 name = "pre-commit"
-version = "2.10.1"
+version = "2.11.0"
 description = "A framework for managing and maintaining multi-language pre-commit hooks."
 category = "dev"
 optional = false
@@ -2056,7 +2056,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7, <3.9"
-content-hash = "9885d58720f35f56ecf54cfcde7e4b80bf49f259cc103792bb839491a9c1bdb7"
+content-hash = "bf4b6b24a7b42a0a37f2241d3406718deb441eff58ab6a52b14454993197ed76"
 
 [metadata.files]
 absl-py = [
@@ -2235,8 +2235,8 @@ flake8-aaa = [
     {file = "flake8_aaa-0.11.1-py3-none-any.whl", hash = "sha256:e3d49f3f87d3f9792b60165d52b229d881efc88ec8cb27d870a2c26492e619e2"},
 ]
 flake8-annotations = [
-    {file = "flake8-annotations-2.5.0.tar.gz", hash = "sha256:e17947a48a5b9f632fe0c72682fc797c385e451048e7dfb20139f448a074cb3e"},
-    {file = "flake8_annotations-2.5.0-py3-none-any.whl", hash = "sha256:3a377140556aecf11fa9f3bb18c10db01f5ea56dc79a730e2ec9b4f1f49e2055"},
+    {file = "flake8-annotations-2.6.0.tar.gz", hash = "sha256:bd0505616c0d85ebb45c6052d339c69f320d3f87fa079ab4e91a4f234a863d05"},
+    {file = "flake8_annotations-2.6.0-py3-none-any.whl", hash = "sha256:8968ff12f296433028ad561c680ccc03a7cd62576d100c3f1475e058b3c11b43"},
 ]
 flake8-annotations-complexity = [
     {file = "flake8_annotations_complexity-0.0.6-py3-none-any.whl", hash = "sha256:078a84e8269ef82c4c9de5198638e9a91a2089307d4e559666464a87b528ea69"},
@@ -2828,8 +2828,8 @@ pluggy = [
     {file = "pluggy-0.13.1.tar.gz", hash = "sha256:15b2acde666561e1298d71b523007ed7364de07029219b604cf808bfa1c765b0"},
 ]
 pre-commit = [
-    {file = "pre_commit-2.10.1-py2.py3-none-any.whl", hash = "sha256:16212d1fde2bed88159287da88ff03796863854b04dc9f838a55979325a3d20e"},
-    {file = "pre_commit-2.10.1.tar.gz", hash = "sha256:399baf78f13f4de82a29b649afd74bef2c4e28eb4f021661fc7f29246e8c7a3a"},
+    {file = "pre_commit-2.11.0-py2.py3-none-any.whl", hash = "sha256:c4853e29c24b27d81359357fae891e00bc83e6a0575c93d815e0e8077bd53b3b"},
+    {file = "pre_commit-2.11.0.tar.gz", hash = "sha256:06f8cb95e29e56788fb5dc98d7ca7a714969dc96633e1ba654ccd5953b64c195"},
 ]
 protobuf = [
     {file = "protobuf-3.15.4-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:eb12f2496f1f196b4bd3040272b60a49802bcf71941d7c0ac9d18d0420ded292"},
