@@ -620,7 +620,7 @@ test = ["pytest", "testfixtures"]
 
 [[package]]
 name = "flake8-pie"
-version = "0.7.0"
+version = "0.7.2"
 description = "A flake8 extension that implements misc. lints"
 category = "dev"
 optional = false
@@ -2057,7 +2057,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7, <3.9"
-content-hash = "74f67f23a5c4e3d8df812cd5fcf52c1d97e5e422d644a6478fc063e35f9b44c6"
+content-hash = "517d5201d5a62f391584c8de1ced14398c4753ed3031cfa0150f73decbdc182a"
 
 [metadata.files]
 absl-py = [
@@ -2255,6 +2255,7 @@ flake8-bandit = [
 ]
 flake8-black = [
     {file = "flake8-black-0.2.1.tar.gz", hash = "sha256:f26651bc10db786c03f4093414f7c9ea982ed8a244cec323c984feeffdf4c118"},
+    {file = "flake8_black-0.2.1-py3-none-any.whl", hash = "sha256:941514149cb8b489cb17a4bb1cf18d84375db3b34381bb018de83509437931a0"},
 ]
 flake8-broken-line = [
     {file = "flake8-broken-line-0.3.0.tar.gz", hash = "sha256:f74e052833324a9e5f0055032f7ccc54b23faabafe5a26241c2f977e70b10b50"},
@@ -2329,8 +2330,8 @@ flake8-pep3101 = [
     {file = "flake8_pep3101-1.3.0-py2.py3-none-any.whl", hash = "sha256:a5dae1caca1243b2b40108dce926d97cf5a9f52515c4a4cbb1ffe1ca0c54e343"},
 ]
 flake8-pie = [
-    {file = "flake8-pie-0.7.0.tar.gz", hash = "sha256:0f1b18a4af6a1c65e9ad8505311373ff24cfed2f3506388240a4f5d2733c20c8"},
-    {file = "flake8_pie-0.7.0-py3-none-any.whl", hash = "sha256:e244004ddc10ae8fac7d601a07f728b7fc0cad649f7dc6bd2f5a4b3f8cec3ea3"},
+    {file = "flake8-pie-0.7.2.tar.gz", hash = "sha256:8085b4ab2254083be2a5703675db3b7e11ee9c0423f6f2c1b17d34ebbbea0d54"},
+    {file = "flake8_pie-0.7.2-py3-none-any.whl", hash = "sha256:069b4a530356f53d11f30d916bf3a4d6e9863b3c10e67df010c66fbca2d98e99"},
 ]
 flake8-plugin-utils = [
     {file = "flake8-plugin-utils-1.3.1.tar.gz", hash = "sha256:6e996bc24ebe327558f24efd106f1be5f0c033c8cbb6eed815631f73d487f1c9"},
