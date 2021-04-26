@@ -4,7 +4,7 @@ build-backend = "poetry.masonry.api"
 
 [tool.poetry]
 name = "prognosais"
-version = "0.3.4"
+version = "0.3.5"
 description = "Tool to quickly and easily train CNNs for medical imaging tasks"
 license = "Apache-2.0"
 
