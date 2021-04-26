@@ -119,11 +119,11 @@ stevedore = ">=1.20.0"
 
 [[package]]
 name = "black"
-version = "20.8b1"
+version = "21.4b0"
 description = "The uncompromising code formatter."
 category = "dev"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.6.2"
 
 [package.dependencies]
 appdirs = "*"
@@ -132,12 +132,13 @@ mypy-extensions = ">=0.4.3"
 pathspec = ">=0.6,<1"
 regex = ">=2020.1.8"
 toml = ">=0.10.1"
-typed-ast = ">=1.4.0"
-typing-extensions = ">=3.7.4"
+typed-ast = {version = ">=1.4.2", markers = "python_version < \"3.8\""}
+typing-extensions = {version = ">=3.7.4", markers = "python_version < \"3.8\""}
 
 [package.extras]
 colorama = ["colorama (>=0.4.3)"]
 d = ["aiohttp (>=3.3.2)", "aiohttp-cors"]
+python2 = ["typed-ast (>=1.4.2)"]
 
 [[package]]
 name = "cachetools"
@@ -292,7 +293,7 @@ python-versions = "*"
 
 [[package]]
 name = "flake8"
-version = "3.9.0"
+version = "3.9.1"
 description = "the modular source code checker: pep8 pyflakes and co"
 category = "dev"
 optional = false
@@ -318,7 +319,7 @@ importlib-metadata = {version = ">=0.9", markers = "python_version < \"3.8\""}
 
 [[package]]
 name = "flake8-aaa"
-version = "0.11.1"
+version = "0.11.2"
 description = "A Flake8 plugin that checks Python tests follow the Arrange-Act-Assert pattern"
 category = "dev"
 optional = false
@@ -537,7 +538,7 @@ python-versions = "*"
 
 [[package]]
 name = "flake8-functions"
-version = "0.0.5"
+version = "0.0.6"
 description = "A flake8 extension that checks functions"
 category = "dev"
 optional = false
@@ -620,11 +621,11 @@ test = ["pytest", "testfixtures"]
 
 [[package]]
 name = "flake8-pie"
-version = "0.6.1"
+version = "0.7.2"
 description = "A flake8 extension that implements misc. lints"
 category = "dev"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 
 [[package]]
 name = "flake8-plugin-utils"
@@ -703,15 +704,17 @@ flake8 = ">=3.5.0"
 
 [[package]]
 name = "flake8-rst-docstrings"
-version = "0.0.14"
+version = "0.1.2"
 description = "Python docstring reStructuredText (RST) validator"
 category = "dev"
 optional = false
-python-versions = "*"
+python-versions = ">=3.3"
 
 [package.dependencies]
 flake8 = ">=3.0.0"
-restructuredtext_lint = "*"
+pydocstyle = ">=3.0.0"
+pygments = "*"
+restructuredtext-lint = "*"
 
 [[package]]
 name = "flake8-strict"
@@ -1250,7 +1253,7 @@ dev = ["pre-commit", "tox"]
 
 [[package]]
 name = "pre-commit"
-version = "2.11.1"
+version = "2.12.1"
 description = "A framework for managing and maintaining multi-language pre-commit hooks."
 category = "dev"
 optional = false
@@ -1623,7 +1626,7 @@ python-versions = "*"
 
 [[package]]
 name = "sphinx"
-version = "3.5.3"
+version = "3.5.4"
 description = "Python documentation generator"
 category = "dev"
 optional = false
@@ -1633,7 +1636,7 @@ python-versions = ">=3.5"
 alabaster = ">=0.7,<0.8"
 babel = ">=1.3"
 colorama = {version = ">=0.3.5", markers = "sys_platform == \"win32\""}
-docutils = ">=0.12"
+docutils = ">=0.12,<0.17"
 imagesize = "*"
 Jinja2 = ">=2.3"
 packaging = "*"
@@ -1654,11 +1657,11 @@ test = ["pytest", "pytest-cov", "html5lib", "cython", "typed-ast"]
 
 [[package]]
 name = "sphinx-autodoc-typehints"
-version = "1.11.1"
+version = "1.12.0"
 description = "Type hints (PEP 484) support for the Sphinx autodoc extension"
 category = "dev"
 optional = false
-python-versions = ">=3.5.2"
+python-versions = ">=3.6"
 
 [package.dependencies]
 Sphinx = ">=3.0"
@@ -1872,7 +1875,7 @@ python-versions = "*"
 
 [[package]]
 name = "tensorflow-io"
-version = "0.17.0"
+version = "0.17.1"
 description = "TensorFlow IO"
 category = "main"
 optional = false
@@ -2057,7 +2060,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7, <3.9"
-content-hash = "7980329a3fcde72bc7a889e2c421eaa248ca20420db712d1f9a996970b4c1763"
+content-hash = "1f3baccc736f9a87f9661c33a82f0132236e6e2135ffad7e3c69b0ddf344d8c0"
 
 [metadata.files]
 absl-py = [
@@ -2105,7 +2108,8 @@ bandit = [
     {file = "bandit-1.7.0.tar.gz", hash = "sha256:8a4c7415254d75df8ff3c3b15cfe9042ecee628a1e40b44c15a98890fbfc2608"},
 ]
 black = [
-    {file = "black-20.8b1.tar.gz", hash = "sha256:1c02557aa099101b9d21496f8a914e9ed2222ef70336404eeeac8edba836fbea"},
+    {file = "black-21.4b0-py3-none-any.whl", hash = "sha256:2db7040bbbbaa46247bfcc05c6efdebd7ebe50c1c3ca745ca6e0f6776438c96c"},
+    {file = "black-21.4b0.tar.gz", hash = "sha256:915d916c48646dbe8040d5265cff7111421a60a3dfe7f7e07273176a57c24a34"},
 ]
 cachetools = [
     {file = "cachetools-4.2.1-py3-none-any.whl", hash = "sha256:1d9d5f567be80f7c07d765e21b814326d78c61eb0c3a637dffc0e5d1796cb2e2"},
@@ -2224,16 +2228,16 @@ filelock = [
     {file = "filelock-3.0.12.tar.gz", hash = "sha256:18d82244ee114f543149c66a6e0c14e9c4f8a1044b5cdaadd0f82159d6a6ff59"},
 ]
 flake8 = [
-    {file = "flake8-3.9.0-py2.py3-none-any.whl", hash = "sha256:12d05ab02614b6aee8df7c36b97d1a3b2372761222b19b58621355e82acddcff"},
-    {file = "flake8-3.9.0.tar.gz", hash = "sha256:78873e372b12b093da7b5e5ed302e8ad9e988b38b063b61ad937f26ca58fc5f0"},
+    {file = "flake8-3.9.1-py2.py3-none-any.whl", hash = "sha256:3b9f848952dddccf635be78098ca75010f073bfe14d2c6bda867154bea728d2a"},
+    {file = "flake8-3.9.1.tar.gz", hash = "sha256:1aa8990be1e689d96c745c5682b687ea49f2e05a443aff1f8251092b0014e378"},
 ]
 flake8-2020 = [
     {file = "flake8_2020-1.6.0-py2.py3-none-any.whl", hash = "sha256:e464cef7889117e7ae7253e35fcb8272bd8ae68fc10bb3399ef85b036c092528"},
     {file = "flake8_2020-1.6.0.tar.gz", hash = "sha256:3e438d9d531577fbb9332bbd0bf394eca890f3b7a5311e2278fb3582381a2f13"},
 ]
 flake8-aaa = [
-    {file = "flake8-aaa-0.11.1.tar.gz", hash = "sha256:cb3c3fbcfbd5548b71f51921e590e37127d69a17a0c027b8545d449636a660fe"},
-    {file = "flake8_aaa-0.11.1-py3-none-any.whl", hash = "sha256:e3d49f3f87d3f9792b60165d52b229d881efc88ec8cb27d870a2c26492e619e2"},
+    {file = "flake8-aaa-0.11.2.tar.gz", hash = "sha256:af2ea174a9eec416d97f3070a0ddf3c741428e23a44a60d12b2d1b5103757beb"},
+    {file = "flake8_aaa-0.11.2-py3-none-any.whl", hash = "sha256:b4b1432d589ae39f1ac818d9cca1d9236ce741755f3abc412271c7205d84cf27"},
 ]
 flake8-annotations = [
     {file = "flake8-annotations-2.6.2.tar.gz", hash = "sha256:0d6cd2e770b5095f09689c9d84cc054c51b929c41a68969ea1beb4b825cac515"},
@@ -2255,6 +2259,7 @@ flake8-bandit = [
 ]
 flake8-black = [
     {file = "flake8-black-0.2.1.tar.gz", hash = "sha256:f26651bc10db786c03f4093414f7c9ea982ed8a244cec323c984feeffdf4c118"},
+    {file = "flake8_black-0.2.1-py3-none-any.whl", hash = "sha256:941514149cb8b489cb17a4bb1cf18d84375db3b34381bb018de83509437931a0"},
 ]
 flake8-broken-line = [
     {file = "flake8-broken-line-0.3.0.tar.gz", hash = "sha256:f74e052833324a9e5f0055032f7ccc54b23faabafe5a26241c2f977e70b10b50"},
@@ -2303,7 +2308,8 @@ flake8-fixme = [
     {file = "flake8_fixme-1.1.1-py2.py3-none-any.whl", hash = "sha256:226a6f2ef916730899f29ac140bed5d4a17e5aba79f00a0e3ae1eff1997cb1ac"},
 ]
 flake8-functions = [
-    {file = "flake8_functions-0.0.5.tar.gz", hash = "sha256:a3229bd980f6ce60adf3c566fb4c8f749b2999aabff68fbcb67ec053616bf24c"},
+    {file = "flake8_functions-0.0.6-py3-none-any.whl", hash = "sha256:7afa7979d20d28a3cde0c14b3fddf42beef23232620a641ad20dcc2de49eddf3"},
+    {file = "flake8_functions-0.0.6.tar.gz", hash = "sha256:6d42da93c4b13354a3973da7bf4e239225f9dba167e8a099fd647ae483ac3e24"},
 ]
 flake8-import-order = [
     {file = "flake8-import-order-0.18.1.tar.gz", hash = "sha256:a28dc39545ea4606c1ac3c24e9d05c849c6e5444a50fb7e9cdd430fc94de6e92"},
@@ -2329,8 +2335,8 @@ flake8-pep3101 = [
     {file = "flake8_pep3101-1.3.0-py2.py3-none-any.whl", hash = "sha256:a5dae1caca1243b2b40108dce926d97cf5a9f52515c4a4cbb1ffe1ca0c54e343"},
 ]
 flake8-pie = [
-    {file = "flake8-pie-0.6.1.tar.gz", hash = "sha256:65833c3ee4f586ddc23cac5ff87fb4133147b61de7cbf6ffc49a0d9360f058b0"},
-    {file = "flake8_pie-0.6.1-py3-none-any.whl", hash = "sha256:eeea4f68939e8e7111ebae5f5de60a3226e4b24342a3fd69343edb5b65f57600"},
+    {file = "flake8-pie-0.7.2.tar.gz", hash = "sha256:8085b4ab2254083be2a5703675db3b7e11ee9c0423f6f2c1b17d34ebbbea0d54"},
+    {file = "flake8_pie-0.7.2-py3-none-any.whl", hash = "sha256:069b4a530356f53d11f30d916bf3a4d6e9863b3c10e67df010c66fbca2d98e99"},
 ]
 flake8-plugin-utils = [
     {file = "flake8-plugin-utils-1.3.1.tar.gz", hash = "sha256:6e996bc24ebe327558f24efd106f1be5f0c033c8cbb6eed815631f73d487f1c9"},
@@ -2358,7 +2364,8 @@ flake8-rst = [
     {file = "flake8_rst-0.8.0-py3-none-any.whl", hash = "sha256:ceabbafbad817e4d22c7836c06c9cf559e394ca89d8ae73155dec81302890d44"},
 ]
 flake8-rst-docstrings = [
-    {file = "flake8-rst-docstrings-0.0.14.tar.gz", hash = "sha256:8f8bcb18f1408b506dd8ba2c99af3eac6128f6911d4bf6ff874b94caa70182a2"},
+    {file = "flake8-rst-docstrings-0.1.2.tar.gz", hash = "sha256:7d34d2175a0cd92aba0872ade74268b2f2c12582c7267d4a0e6ef1c32a828ce3"},
+    {file = "flake8_rst_docstrings-0.1.2-py3-none-any.whl", hash = "sha256:73b5db2fd9d4d7c7e6b7767931730c4570e5a89f34a1501b837afb3b6d31537a"},
 ]
 flake8-strict = [
     {file = "flake8_strict-0.2.1-py2.py3-none-any.whl", hash = "sha256:2ef66f75f9215c2084ae7d1b18e158a3c392141a5621ecab28858256ea75d41e"},
@@ -2852,8 +2859,8 @@ pluggy = [
     {file = "pluggy-0.13.1.tar.gz", hash = "sha256:15b2acde666561e1298d71b523007ed7364de07029219b604cf808bfa1c765b0"},
 ]
 pre-commit = [
-    {file = "pre_commit-2.11.1-py2.py3-none-any.whl", hash = "sha256:94c82f1bf5899d56edb1d926732f4e75a7df29a0c8c092559c77420c9d62428b"},
-    {file = "pre_commit-2.11.1.tar.gz", hash = "sha256:de55c5c72ce80d79106e48beb1b54104d16495ce7f95b0c7b13d4784193a00af"},
+    {file = "pre_commit-2.12.1-py2.py3-none-any.whl", hash = "sha256:70c5ec1f30406250b706eda35e868b87e3e4ba099af8787e3e8b4b01e84f4712"},
+    {file = "pre_commit-2.12.1.tar.gz", hash = "sha256:900d3c7e1bf4cf0374bb2893c24c23304952181405b4d88c9c40b72bda1bb8a9"},
 ]
 protobuf = [
     {file = "protobuf-3.15.4-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:eb12f2496f1f196b4bd3040272b60a49802bcf71941d7c0ac9d18d0420ded292"},
@@ -3181,12 +3188,12 @@ snowballstemmer = [
     {file = "snowballstemmer-2.1.0.tar.gz", hash = "sha256:e997baa4f2e9139951b6f4c631bad912dfd3c792467e2f03d7239464af90e914"},
 ]
 sphinx = [
-    {file = "Sphinx-3.5.3-py3-none-any.whl", hash = "sha256:3f01732296465648da43dec8fb40dc451ba79eb3e2cc5c6d79005fd98197107d"},
-    {file = "Sphinx-3.5.3.tar.gz", hash = "sha256:ce9c228456131bab09a3d7d10ae58474de562a6f79abb3dc811ae401cf8c1abc"},
+    {file = "Sphinx-3.5.4-py3-none-any.whl", hash = "sha256:2320d4e994a191f4b4be27da514e46b3d6b420f2ff895d064f52415d342461e8"},
+    {file = "Sphinx-3.5.4.tar.gz", hash = "sha256:19010b7b9fa0dc7756a6e105b2aacd3a80f798af3c25c273be64d7beeb482cb1"},
 ]
 sphinx-autodoc-typehints = [
-    {file = "sphinx-autodoc-typehints-1.11.1.tar.gz", hash = "sha256:244ba6d3e2fdb854622f643c7763d6f95b6886eba24bec28e86edf205e4ddb20"},
-    {file = "sphinx_autodoc_typehints-1.11.1-py3-none-any.whl", hash = "sha256:da049791d719f4c9813642496ee4764203e317f0697eb75446183fa2a68e3f77"},
+    {file = "sphinx-autodoc-typehints-1.12.0.tar.gz", hash = "sha256:193617d9dbe0847281b1399d369e74e34cd959c82e02c7efde077fca908a9f52"},
+    {file = "sphinx_autodoc_typehints-1.12.0-py3-none-any.whl", hash = "sha256:5e81776ec422dd168d688ab60f034fccfafbcd94329e9537712c93003bddc04a"},
 ]
 sphinx-rtd-theme = [
     {file = "sphinx_rtd_theme-0.5.2-py2.py3-none-any.whl", hash = "sha256:4a05bdbe8b1446d77a01e20a23ebc6777c74f43237035e76be89699308987d6f"},
@@ -3260,15 +3267,15 @@ tensorflow-estimator = [
     {file = "tensorflow_estimator-2.4.0-py2.py3-none-any.whl", hash = "sha256:5b7b7bf2debe19a8794adacc43e8ba6459daa4efaf54d3302623994a359b17f0"},
 ]
 tensorflow-io = [
-    {file = "tensorflow_io-0.17.0-cp36-cp36m-macosx_10_13_x86_64.whl", hash = "sha256:0a18692a076995018d0e3951e5f2a1364978b1c86a2a8c9ae73ec4176a37a2a0"},
-    {file = "tensorflow_io-0.17.0-cp36-cp36m-manylinux2010_x86_64.whl", hash = "sha256:33ff333eb2907d3de8d5c21f2dfee663b1f144d527ff2b195492a2a2d50619ca"},
-    {file = "tensorflow_io-0.17.0-cp36-cp36m-win_amd64.whl", hash = "sha256:e366d7a38871a52ea62ab3ec726531748ac3fc07c97502ecd4d16242477009c5"},
-    {file = "tensorflow_io-0.17.0-cp37-cp37m-macosx_10_13_x86_64.whl", hash = "sha256:ef5364b57b42280c102bd37962648e4f2ceb858463f1ef9d59d3eee8181395e1"},
-    {file = "tensorflow_io-0.17.0-cp37-cp37m-manylinux2010_x86_64.whl", hash = "sha256:94767c841d6fd5543a1f1b864d88deee510972443092f513aa558478cd13c363"},
-    {file = "tensorflow_io-0.17.0-cp37-cp37m-win_amd64.whl", hash = "sha256:f74c08b4277db2b1192a54dee2d020a9a3277f763bec81c15c0e24406948274d"},
-    {file = "tensorflow_io-0.17.0-cp38-cp38-macosx_10_13_x86_64.whl", hash = "sha256:2529c41e52d787d9c6e10d253e958a4f3556ad659bd9e178fae80a5eacee1f6b"},
-    {file = "tensorflow_io-0.17.0-cp38-cp38-manylinux2010_x86_64.whl", hash = "sha256:3e498f6ecf5a0346ca64265ccca34d1db48eea00b14f3f686f944e985c06bfdb"},
-    {file = "tensorflow_io-0.17.0-cp38-cp38-win_amd64.whl", hash = "sha256:a1790d89c38f5c1f8173883eb15524ea7d80ee30fff94e4cb8d23a168c45d465"},
+    {file = "tensorflow_io-0.17.1-cp36-cp36m-macosx_10_13_x86_64.whl", hash = "sha256:1cbd071850901d3adc4aecbb5030e54e9c772ce71494ac8458fa67bf2ce9521a"},
+    {file = "tensorflow_io-0.17.1-cp36-cp36m-manylinux2010_x86_64.whl", hash = "sha256:b9cf74e838ea7feab56ece6ccb58fc488bb685cc71d0b23bc12eccf68a584744"},
+    {file = "tensorflow_io-0.17.1-cp36-cp36m-win_amd64.whl", hash = "sha256:ae101de08bfa8b640af42ca24843c64fe53371299e1c6c56d873fe4a6bcd697c"},
+    {file = "tensorflow_io-0.17.1-cp37-cp37m-macosx_10_13_x86_64.whl", hash = "sha256:b04ed67434d2de57451fcf7b9a1897e7d9cdb8d308ef16608f8d51167b950aad"},
+    {file = "tensorflow_io-0.17.1-cp37-cp37m-manylinux2010_x86_64.whl", hash = "sha256:00f8a8a1d7561013be4ec0f8eb5fc1ad23ac8864e025aa5164c33c7f9a4c9d3d"},
+    {file = "tensorflow_io-0.17.1-cp37-cp37m-win_amd64.whl", hash = "sha256:39f46862eda5b46b98b59da86ca0a5fdc1c2296f58ecd9be57e770ac722cb164"},
+    {file = "tensorflow_io-0.17.1-cp38-cp38-macosx_10_13_x86_64.whl", hash = "sha256:fafca8ae03d52f28d2ca153079e730cf4e26a0f237c8e89578400a2033fe8700"},
+    {file = "tensorflow_io-0.17.1-cp38-cp38-manylinux2010_x86_64.whl", hash = "sha256:8bcc45bb7040037161db30f917935f5ea36d10dd21551c7b50030bd0a395ef2d"},
+    {file = "tensorflow_io-0.17.1-cp38-cp38-win_amd64.whl", hash = "sha256:8343d604d14257806059fa620294565a168f495cc43b17c9ca779403714457bc"},
 ]
 termcolor = [
     {file = "termcolor-1.1.0.tar.gz", hash = "sha256:1d6d69ce66211143803fbc56652b41d73b4a400a2891d7bf7a1cdf4c02de613b"},
