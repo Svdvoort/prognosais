@@ -537,7 +537,7 @@ python-versions = "*"
 
 [[package]]
 name = "flake8-functions"
-version = "0.0.5"
+version = "0.0.6"
 description = "A flake8 extension that checks functions"
 category = "dev"
 optional = false
@@ -2059,7 +2059,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7, <3.9"
-content-hash = "b7f1d619593763d922f6ad89035b4adcb86561ae8a9610c3eb16f4c2f8c4af3d"
+content-hash = "d7f18c18d52c5e93c0b884e50650fae9a86a7cf85b5a81ab7c608ea8a8062387"
 
 [metadata.files]
 absl-py = [
@@ -2306,7 +2306,8 @@ flake8-fixme = [
     {file = "flake8_fixme-1.1.1-py2.py3-none-any.whl", hash = "sha256:226a6f2ef916730899f29ac140bed5d4a17e5aba79f00a0e3ae1eff1997cb1ac"},
 ]
 flake8-functions = [
-    {file = "flake8_functions-0.0.5.tar.gz", hash = "sha256:a3229bd980f6ce60adf3c566fb4c8f749b2999aabff68fbcb67ec053616bf24c"},
+    {file = "flake8_functions-0.0.6-py3-none-any.whl", hash = "sha256:7afa7979d20d28a3cde0c14b3fddf42beef23232620a641ad20dcc2de49eddf3"},
+    {file = "flake8_functions-0.0.6.tar.gz", hash = "sha256:6d42da93c4b13354a3973da7bf4e239225f9dba167e8a099fd647ae483ac3e24"},
 ]
 flake8-import-order = [
     {file = "flake8-import-order-0.18.1.tar.gz", hash = "sha256:a28dc39545ea4606c1ac3c24e9d05c849c6e5444a50fb7e9cdd430fc94de6e92"},
