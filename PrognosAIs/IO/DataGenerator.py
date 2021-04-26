@@ -572,23 +572,23 @@ class HDF5Generator:
         if self.TF_dataset is None:
             dataset = tf.data.Dataset.from_tensor_slices(self.sample_locations)
 
-            if self.shard:
-                dataset = dataset.shard(self.n_workers, self.worker_index)
+            # if self.shard:
+            #     dataset = dataset.shard(self.n_workers, self.worker_index)
 
             # If we dont cache the whole dataset in memory, we just cache the
             # file names, and perform as many steps before the data loading
             # as possible to reduce the loading times
-            if not self.cache_in_memory:
-                dataset = self.setup_caching_shuffling_steps(dataset)
+            # if not self.cache_in_memory:
+            #     dataset = self.setup_caching_shuffling_steps(dataset)
 
-            dataset = dataset.map(self.loader, num_parallel_calls=num_parallel_calls)
+            dataset = dataset.map(self.loader)
 
-            if self.cache_in_memory:
-                dataset = self.setup_caching_shuffling_steps(dataset)
+            # if self.cache_in_memory:
+            #     dataset = self.setup_caching_shuffling_steps(dataset)
 
             if self.data_augmentation:
                 dataset = dataset.map(
-                    self.apply_augmentation, num_parallel_calls=num_parallel_calls,
+                    self.apply_augmentation
                 )
 
             dataset = dataset.batch(self.batch_size, drop_remainder=self.drop_batch_remainder)
@@ -596,7 +596,7 @@ class HDF5Generator:
             if self.repeat:
                 dataset = dataset.repeat()
 
-            dataset = dataset.prefetch(num_parallel_calls)
+            # dataset = dataset.prefetch()
             self.TF_dataset = dataset
         return self.TF_dataset
 
