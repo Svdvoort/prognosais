@@ -621,7 +621,7 @@ test = ["pytest", "testfixtures"]
 
 [[package]]
 name = "flake8-pie"
-version = "0.7.2"
+version = "0.7.4"
 description = "A flake8 extension that implements misc. lints"
 category = "dev"
 optional = false
@@ -2060,7 +2060,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7, <3.9"
-content-hash = "1f3baccc736f9a87f9661c33a82f0132236e6e2135ffad7e3c69b0ddf344d8c0"
+content-hash = "653bb3612999e8382d4c509ce278f65430d9fe650a474038649392e68fc40e27"
 
 [metadata.files]
 absl-py = [
@@ -2335,8 +2335,8 @@ flake8-pep3101 = [
     {file = "flake8_pep3101-1.3.0-py2.py3-none-any.whl", hash = "sha256:a5dae1caca1243b2b40108dce926d97cf5a9f52515c4a4cbb1ffe1ca0c54e343"},
 ]
 flake8-pie = [
-    {file = "flake8-pie-0.7.2.tar.gz", hash = "sha256:8085b4ab2254083be2a5703675db3b7e11ee9c0423f6f2c1b17d34ebbbea0d54"},
-    {file = "flake8_pie-0.7.2-py3-none-any.whl", hash = "sha256:069b4a530356f53d11f30d916bf3a4d6e9863b3c10e67df010c66fbca2d98e99"},
+    {file = "flake8-pie-0.7.4.tar.gz", hash = "sha256:e4691cda30a0540a215df5e0acbbf863d08ca4ffcd0ca0a576775dd0983f301e"},
+    {file = "flake8_pie-0.7.4-py3-none-any.whl", hash = "sha256:7adedf25bb82e228a4a765bc00307879831a4f0efa710dc0cfb49b166c821889"},
 ]
 flake8-plugin-utils = [
     {file = "flake8-plugin-utils-1.3.1.tar.gz", hash = "sha256:6e996bc24ebe327558f24efd106f1be5f0c033c8cbb6eed815631f73d487f1c9"},
