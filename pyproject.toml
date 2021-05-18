@@ -102,7 +102,7 @@ xdoctest = "^0.15.4"
 pre-commit = "^2.12.1"
 recommonmark = "^0.7.1"
 sphinx_rtd_theme = "^0.5.2"
-black = "^21.5b0"
+black = "^21.5b1"
 pytest-memprof = "^0.2.0"
 
 
