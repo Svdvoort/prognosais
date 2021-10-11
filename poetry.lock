@@ -749,7 +749,7 @@ flake8 = "*"
 
 [[package]]
 name = "flake8-typing-imports"
-version = "1.10.1"
+version = "1.11.0"
 description = "flake8 plugin which checks that typing imports are properly guarded"
 category = "dev"
 optional = false
@@ -2084,7 +2084,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7, <3.9"
-content-hash = "256dfc5b906cc18a85785f36bf9722bbb12ec57587227fc4f4cc4970546414c4"
+content-hash = "5b3d2b7e7b3eb3ae47e861e76a2e0a7820cc610d4f008e2c3a63873acce073aa"
 
 [metadata.files]
 absl-py = [
@@ -2381,8 +2381,8 @@ flake8-string-format = [
     {file = "flake8_string_format-0.3.0-py2.py3-none-any.whl", hash = "sha256:812ff431f10576a74c89be4e85b8e075a705be39bc40c4b4278b5b13e2afa9af"},
 ]
 flake8-typing-imports = [
-    {file = "flake8_typing_imports-1.10.1-py2.py3-none-any.whl", hash = "sha256:6a344423b3a14e7951e0e3e7fec78f2027e47f013a8208fced636f966e255fe9"},
-    {file = "flake8_typing_imports-1.10.1.tar.gz", hash = "sha256:fcd653cf6bc988a722e0ba26029b5c64f54395f32541c234ee516ea0093f74d4"},
+    {file = "flake8_typing_imports-1.11.0-py2.py3-none-any.whl", hash = "sha256:65ac067a41a68fd5e23fcbe75eab2179f53693f5f68eb9052dd7cc87b7d3b358"},
+    {file = "flake8_typing_imports-1.11.0.tar.gz", hash = "sha256:337b8be2fe28467143cbd86619906ce4c8bbdf9018866cbbd854b6c3c65e2582"},
 ]
 flake8-variables-names = [
     {file = "flake8_variables_names-0.0.4.tar.gz", hash = "sha256:d6fa0571a807c72940b5773827c5760421ea6f8206595ff0a8ecfa01e42bf2cf"},
