@@ -1130,7 +1130,7 @@ python-versions = "*"
 
 [[package]]
 name = "natsort"
-version = "8.0.1"
+version = "8.0.2"
 description = "Simple yet flexible natural sorting in Python."
 category = "main"
 optional = false
@@ -2781,8 +2781,8 @@ mypy-extensions = [
     {file = "mypy_extensions-0.4.3.tar.gz", hash = "sha256:2d82818f5bb3e369420cb3c4060a7970edba416647068eb4c5343488a6c604a8"},
 ]
 natsort = [
-    {file = "natsort-8.0.1-py3-none-any.whl", hash = "sha256:c504a229c38926e047e9c3952a08920bc585efb62d7d160514ace9898b00ac0b"},
-    {file = "natsort-8.0.1.tar.gz", hash = "sha256:2e8fbc2b9e44ed7cbdf55d782375d706ba8742591c1c5910992542f3899abbed"},
+    {file = "natsort-8.0.2-py3-none-any.whl", hash = "sha256:09cff3cabb617f9794f643758ab5b337c1c0af1a6df11edf5c04de496fd7fb26"},
+    {file = "natsort-8.0.2.tar.gz", hash = "sha256:feb87e0ce1dc1f8f3f21e18a85216c790e746d76a5ff6889563394605f504a2b"},
 ]
 nodeenv = [
     {file = "nodeenv-1.5.0-py2.py3-none-any.whl", hash = "sha256:5304d424c529c997bc888453aeaa6362d242b6b4631e90f3d4bf1b290f1c84a9"},
