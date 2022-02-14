@@ -1225,7 +1225,7 @@ test = ["pytest (>=4.0.2)", "pytest-xdist", "hypothesis (>=3.58)"]
 
 [[package]]
 name = "pandas-vet"
-version = "0.2.2"
+version = "0.2.3"
 description = "A flake8 plugin to lint pandas in an opinionated way"
 category = "dev"
 optional = false
@@ -2123,7 +2123,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7, <3.9"
-content-hash = "6c4a668efd31a4864aa7eb24b9c2526a57b87ee7d595e2f5c54bb93e294cfd5b"
+content-hash = "2d8fb2fcc04c62fbb4ad8fa367309f67195a0d6f790b6866e68227c896ab2545"
 
 [metadata.files]
 absl-py = [
@@ -2887,8 +2887,8 @@ pandas = [
     {file = "pandas-1.1.5.tar.gz", hash = "sha256:f10fc41ee3c75a474d3bdf68d396f10782d013d7f67db99c0efbfd0acb99701b"},
 ]
 pandas-vet = [
-    {file = "pandas-vet-0.2.2.tar.gz", hash = "sha256:0a316c3edaaa1bcd772bfaea0e8d2b2aa409b740198746a2b60f2007b313f42e"},
-    {file = "pandas_vet-0.2.2-py3-none-any.whl", hash = "sha256:961235064ebe5b38ca9c3f45961fdce61796a01aea1f07b06b67f6b359aabea2"},
+    {file = "pandas-vet-0.2.3.tar.gz", hash = "sha256:58b64027a4c192b4b62272c1d8fdecc1733352452401282b697c1a32abe4656a"},
+    {file = "pandas_vet-0.2.3-py3-none-any.whl", hash = "sha256:349e4240399ead316f64f9afc8e94a5bd5cfff45d7f448c5c22989e86c4ac782"},
 ]
 pathspec = [
     {file = "pathspec-0.8.1-py2.py3-none-any.whl", hash = "sha256:aa0cb481c4041bf52ffa7b0d8fa6cd3e88a2ca4879c533c9153882ee2556790d"},
