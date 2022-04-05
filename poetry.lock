@@ -1297,11 +1297,11 @@ dev = ["pre-commit", "tox"]
 
 [[package]]
 name = "pre-commit"
-version = "2.17.0"
+version = "2.18.1"
 description = "A framework for managing and maintaining multi-language pre-commit hooks."
 category = "dev"
 optional = false
-python-versions = ">=3.6.1"
+python-versions = ">=3.7"
 
 [package.dependencies]
 cfgv = ">=2.0.0"
@@ -2133,7 +2133,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7, <3.9"
-content-hash = "80402313f99d2e8722fa99fdad0fad2ba89bfa5bf8c1e3f84344b9445d27a020"
+content-hash = "c0777752139a6b7f5d3b2e1fcded043e4556ee65a9f0f974eebed63f0170c65a"
 
 [metadata.files]
 absl-py = [
@@ -2956,8 +2956,8 @@ pluggy = [
     {file = "pluggy-0.13.1.tar.gz", hash = "sha256:15b2acde666561e1298d71b523007ed7364de07029219b604cf808bfa1c765b0"},
 ]
 pre-commit = [
-    {file = "pre_commit-2.17.0-py2.py3-none-any.whl", hash = "sha256:725fa7459782d7bec5ead072810e47351de01709be838c2ce1726b9591dad616"},
-    {file = "pre_commit-2.17.0.tar.gz", hash = "sha256:c1a8040ff15ad3d648c70cc3e55b93e4d2d5b687320955505587fd79bbaed06a"},
+    {file = "pre_commit-2.18.1-py2.py3-none-any.whl", hash = "sha256:02226e69564ebca1a070bd1f046af866aa1c318dbc430027c50ab832ed2b73f2"},
+    {file = "pre_commit-2.18.1.tar.gz", hash = "sha256:5d445ee1fa8738d506881c5d84f83c62bb5be6b2838e32207433647e8e5ebe10"},
 ]
 protobuf = [
     {file = "protobuf-3.15.4-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:eb12f2496f1f196b4bd3040272b60a49802bcf71941d7c0ac9d18d0420ded292"},
