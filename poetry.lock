@@ -698,7 +698,7 @@ flake8 = "*"
 
 [[package]]
 name = "flake8-requirements"
-version = "1.5.5"
+version = "1.6.0"
 description = "Package requirements checker, plugin for flake8"
 category = "dev"
 optional = false
@@ -2136,7 +2136,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7, <3.9"
-content-hash = "37277fffcdf0910bd5d9f50f7052171f52f49e78e71a988d384646a5e5b1e628"
+content-hash = "dd0f0ed56eeba3d1b182268ce68a63c6f9afe001ddd3b7ec279260ac14555f61"
 
 [metadata.files]
 absl-py = []
