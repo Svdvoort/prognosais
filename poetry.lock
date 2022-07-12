@@ -1295,7 +1295,7 @@ dev = ["pre-commit", "tox"]
 
 [[package]]
 name = "pre-commit"
-version = "2.19.0"
+version = "2.20.0"
 description = "A framework for managing and maintaining multi-language pre-commit hooks."
 category = "dev"
 optional = false
@@ -2136,7 +2136,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7, <3.9"
-content-hash = "31269372858f29df135b28f5fa897360c67e7668d254f2b356592c2b2116fa3c"
+content-hash = "37277fffcdf0910bd5d9f50f7052171f52f49e78e71a988d384646a5e5b1e628"
 
 [metadata.files]
 absl-py = []
