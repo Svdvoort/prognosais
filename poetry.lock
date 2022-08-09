@@ -2021,14 +2021,13 @@ typing-extensions = ">=3.7.4"
 
 [[package]]
 name = "unimport"
-version = "0.10.0"
-description = "attr: unimport.constants.DESCRIPTION"
+version = "0.11.1"
+description = "attr: unimport.__description__"
 category = "dev"
 optional = false
 python-versions = ">=3.6"
 
 [package.dependencies]
-importlib_metadata = {version = ">=0.12", markers = "python_version < \"3.8\""}
 libcst = {version = ">=0.3.0", markers = "python_version <= \"3.8\""}
 pathspec = ">=0.5.0"
 toml = ">=0.9.0"
@@ -2127,7 +2126,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7, <3.9"
-content-hash = "52a6925844cd55fc58c776a993163b750828f48cb9fca5c8bbe580d674580fa3"
+content-hash = "dd4056a6e84bb2828c0e906c0e32bf57b8112ac5d278db8829780bc46334bbcf"
 
 [metadata.files]
 absl-py = [
@@ -3452,7 +3451,7 @@ typing-inspect = [
     {file = "typing_inspect-0.6.0.tar.gz", hash = "sha256:8f1b1dd25908dbfd81d3bebc218011531e7ab614ba6e5bf7826d887c834afab7"},
 ]
 unimport = [
-    {file = "unimport-0.10.0.tar.gz", hash = "sha256:df9e6f05452155550e039565dd494d5ddec4a4fffe29deed92735320d5cd91ca"},
+    {file = "unimport-0.11.1.tar.gz", hash = "sha256:c9c7a5f8950bc75bbd6d829d9e20623dc8a23d301fac0f72a462514a7f758d01"},
 ]
 urllib3 = [
     {file = "urllib3-1.26.3-py2.py3-none-any.whl", hash = "sha256:1b465e494e3e0d8939b50680403e3aedaa2bc434b7d5af64dfd3c958d7f5ae80"},
