@@ -1648,7 +1648,7 @@ toml = ["setuptools (>=42)", "tomli (>=1.0.0)"]
 
 [[package]]
 name = "simpleitk"
-version = "2.1.1.2"
+version = "2.2.0"
 description = "SimpleITK is a simplified interface to the Insight Toolkit (ITK) for image registration and segmentation"
 category = "main"
 optional = false
@@ -3266,25 +3266,25 @@ setuptools-scm = [
     {file = "setuptools_scm-6.3.2.tar.gz", hash = "sha256:a49aa8081eeb3514eb9728fa5040f2eaa962d6c6f4ec9c32f6c1fba88f88a0f2"},
 ]
 simpleitk = [
-    {file = "SimpleITK-2.1.1.2-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:8270c8f0d9223ab34f4f2a1be7f7851e440f3b07a6f6e8d2daa6cdfa5db6d8ff"},
-    {file = "SimpleITK-2.1.1.2-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:e1e6c7580dd1e34e57c12c1808025692d491f2e41244008ae2677f959ca145b2"},
-    {file = "SimpleITK-2.1.1.2-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:aeed26691815edc0205dc8045a41c71123715d57ca3ca99e8093e7f54d74d658"},
-    {file = "SimpleITK-2.1.1.2-cp310-cp310-win_amd64.whl", hash = "sha256:d90f255cc1b12b69b4a01d73ae230b6176f181c7ad5369ad78629c4ce7420647"},
-    {file = "SimpleITK-2.1.1.2-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:0fab7720118b9fa2047bd57bef9a05a034545c043a9d32d7d19b31be48c499f5"},
-    {file = "SimpleITK-2.1.1.2-cp36-cp36m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:7e0f9fce88943259408c6136e2ddf864079bde5c0320f76092879090e67c2d72"},
-    {file = "SimpleITK-2.1.1.2-cp36-cp36m-win_amd64.whl", hash = "sha256:3d861c39d61ede9b413abca8b9107eed594e9ed7cc9c2d1e78be55c7d0e9b8d7"},
-    {file = "SimpleITK-2.1.1.2-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:93dce9f56c8a83b3d785de965e81d2ba97485efdbe251929d12e7f2a9834df1c"},
-    {file = "SimpleITK-2.1.1.2-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:77df01035a17bea5306e1b27398238b4eea9cc77fdda242f6558fbeebc481209"},
-    {file = "SimpleITK-2.1.1.2-cp37-cp37m-win_amd64.whl", hash = "sha256:348dac099e0da89f68c59fa4cc1fb103748b17d457495552b279ee6fb0d4d717"},
-    {file = "SimpleITK-2.1.1.2-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:0e47deea6062bec10de049539556e7ac494dabdc58ce3ad24d4a3dd8b5a4fb5d"},
-    {file = "SimpleITK-2.1.1.2-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:8af26153c0fa248bc63f6adb0aaa9a56941bcae9d2ff34b0bee6d461986aa086"},
-    {file = "SimpleITK-2.1.1.2-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:b0ff10b78a17f78cee4cf44f2cf50eed13842c142699ffd7cfad45a04b43a5e3"},
-    {file = "SimpleITK-2.1.1.2-cp38-cp38-win_amd64.whl", hash = "sha256:fca92a9547411a09e781deb30ec8c7e7d9ce840e1e1300084fbf24fe0ba76d41"},
-    {file = "SimpleITK-2.1.1.2-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:e45711c618702df970e5bf7d468d5154e23bf04a861f06ce1f96406df35bde7d"},
-    {file = "SimpleITK-2.1.1.2-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:14d04ff5343dbca12c44d61905292e14aaa523d8cb6a18aff2fcea6beefc28a8"},
-    {file = "SimpleITK-2.1.1.2-cp39-cp39-manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:f895061d351cb9810ad5231e7cf78c7b5ce2ed8039e6e31446db7557f6f99c46"},
-    {file = "SimpleITK-2.1.1.2-cp39-cp39-win_amd64.whl", hash = "sha256:7b71062e52ac39b638d0619e6d5885124454c7c0569d00ce3e0cd2f293bc956f"},
-    {file = "SimpleITK-2.1.1.2.tar.gz", hash = "sha256:5c0689b007d449ce0ce17a9ea322152315fb17ed32949005a974d3d9c2f58da3"},
+    {file = "SimpleITK-2.2.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:1d8cf83a9165b6ee3f3f4f599e609f55d823171af47f67ef11a8237f60245e0e"},
+    {file = "SimpleITK-2.2.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:c4b129a0e53633432000e9561a80a0631c09efda83e754f623eb1d890ed169b4"},
+    {file = "SimpleITK-2.2.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d14e2b8a69862d1ac46e5bfbea9af0159a05e928bdad016e1639e5dbb927f803"},
+    {file = "SimpleITK-2.2.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:b447fd6b704cd46e3b280449353cbec4c6f5cebe911c2c7e72bb2e0fcaf82592"},
+    {file = "SimpleITK-2.2.0-cp310-cp310-win_amd64.whl", hash = "sha256:e2bf4fc9d4b16bd2f8981d014d00374dc669f725b486eff5561440a152518fed"},
+    {file = "SimpleITK-2.2.0-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:c5a66cdb741ad600a8c6c5f9287186da0cfa0df7cd88a343da814c5fa8078233"},
+    {file = "SimpleITK-2.2.0-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:35ad6cc785d3b65f9ca2d2d2a0dbd2e7d3e0da530daea3959eaa0c23535c462b"},
+    {file = "SimpleITK-2.2.0-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:3d8bf4e57796b820864813518fa7f7241f96e3b098abbe06c5529631cd29d620"},
+    {file = "SimpleITK-2.2.0-cp37-cp37m-win_amd64.whl", hash = "sha256:089d0d5b7df1d754177e24471562e941ac891a7311fde989de61215ec5ad6987"},
+    {file = "SimpleITK-2.2.0-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:c6e09bd036d5ce9eb72c287789a607542333ec8b55b4c68e55dbf9366724f199"},
+    {file = "SimpleITK-2.2.0-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:32cb518b0da4f48bf355183511aa92408d4f480d5b5e79c94576064d7da0dea5"},
+    {file = "SimpleITK-2.2.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:c1aeda14c9bd9cf3d72e5f3f26f87714eb094275015500736c60c31ce6151882"},
+    {file = "SimpleITK-2.2.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:537045ea30b2aeadd53eb768036691f74c692348e15301a363f7a34c8cab36bb"},
+    {file = "SimpleITK-2.2.0-cp38-cp38-win_amd64.whl", hash = "sha256:ccaef9fd731c9732c803680b6474bcacb257c1ce3b2db827cc2ad455fbbec0c8"},
+    {file = "SimpleITK-2.2.0-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:160a5e2743ab16b1fe201766ec3aed9587a19dcce534953736d4af7a77216628"},
+    {file = "SimpleITK-2.2.0-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:a712f4b205a0c2bbd9bfbefbe27f83ad892904f6cf9e165644dec0fb2320c508"},
+    {file = "SimpleITK-2.2.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:dc82050f78bfed95af20683a10bb2a0caf8c3c798aa2ccd43099f338baa2ec55"},
+    {file = "SimpleITK-2.2.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ffaa51d88a75048bc759f6147c87695987914764ac411095f63c0d4ebde2365b"},
+    {file = "SimpleITK-2.2.0-cp39-cp39-win_amd64.whl", hash = "sha256:b607f118b061744a7dcf656ccd93245029c312318df7fd88063356287784fbc8"},
 ]
 six = [
     {file = "six-1.15.0-py2.py3-none-any.whl", hash = "sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"},
