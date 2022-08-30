@@ -1664,11 +1664,11 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "slurmpie"
-version = "0.4.0"
+version = "0.5.1"
 description = "Package to interact with SLURM"
 category = "main"
 optional = false
-python-versions = ">=3.5"
+python-versions = ">=3.6"
 
 [[package]]
 name = "smmap"
@@ -2126,7 +2126,7 @@ testing = ["func-timeout", "jaraco.itertools", "jaraco.test (>=3.2.0)", "pytest 
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7, <3.9"
-content-hash = "f176d807817f1d5458fd88f0b36d288530e9c8162a9b3fff5bca686fb70b29f4"
+content-hash = "4dc609ae827d435da16eebf48edecae2a9dd8280a626e56ebdcbcdfe41764b1b"
 
 [metadata.files]
 absl-py = [
@@ -3291,8 +3291,8 @@ six = [
     {file = "six-1.15.0.tar.gz", hash = "sha256:30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259"},
 ]
 slurmpie = [
-    {file = "slurmpie-0.4.0-py3-none-any.whl", hash = "sha256:2b555ae707265bb7cbc94f32c4673b8a8dd6c1ddbd4a25166cefc41dfcb50287"},
-    {file = "slurmpie-0.4.0.tar.gz", hash = "sha256:3a64bd75abc535479c98d5f0ae483b1d2ceca50dd45bee26f77cb18c41e37033"},
+    {file = "slurmpie-0.5.1-py3-none-any.whl", hash = "sha256:5f357bd556b9f4d56b554e512e895777d4e60d03f0dc723949b9a3e7519b97c2"},
+    {file = "slurmpie-0.5.1.tar.gz", hash = "sha256:6003e8c48a74194eed19053564ceae5afaa541cb17741433a71efda356f77922"},
 ]
 smmap = [
     {file = "smmap-3.0.5-py2.py3-none-any.whl", hash = "sha256:7bfcf367828031dc893530a29cb35eb8c8f2d7c8f2d0989354d75d24c8573714"},
