@@ -520,7 +520,7 @@ setuptools = "*"
 
 [[package]]
 name = "flake8-executable"
-version = "2.1.1"
+version = "2.1.2"
 description = "A Flake8 plugin for checking executable permissions and shebangs."
 category = "dev"
 optional = false
@@ -2159,7 +2159,7 @@ testing = ["func-timeout", "jaraco.itertools", "jaraco.test (>=3.2.0)", "pytest 
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7, <3.9"
-content-hash = "8ab7e117c91dbca30070cfde7de693dde08e6cf913d0db93b76546b738e78957"
+content-hash = "28ed22f38d6c88471f9c5bb477e21d97404d0f411c8a7aad20047e53db60ed8c"
 
 [metadata.files]
 absl-py = [
@@ -2392,8 +2392,8 @@ flake8-eradicate = [
     {file = "flake8_eradicate-1.3.0-py3-none-any.whl", hash = "sha256:85a71e0c5f4e07f7c6c5fec520483561fd6bd295417d622855bdeade99242e3d"},
 ]
 flake8-executable = [
-    {file = "flake8-executable-2.1.1.tar.gz", hash = "sha256:c6230a089ad49dbeef049d8e1e89591d9823f06c829cd9d6b1ca83b4b1d7f54f"},
-    {file = "flake8_executable-2.1.1-py3-none-any.whl", hash = "sha256:c1df78bf4eff1b75bff0a3d29609d096d61ccfd703a4a9485019af9a640d6e2b"},
+    {file = "flake8-executable-2.1.2.tar.gz", hash = "sha256:ecc80a70d8e4ac21d5b2a27c730770b2a4b96542ee4d82b9be5bad0e22fd5a70"},
+    {file = "flake8_executable-2.1.2-py3-none-any.whl", hash = "sha256:871f88a612bb9e816e00a37c044f17fe772269ac3f39f01aeecebdfeb40dba7b"},
 ]
 flake8-expression-complexity = [
     {file = "flake8_expression_complexity-0.0.11-py3-none-any.whl", hash = "sha256:b56bac37f7dd5d3d102a7111c89f6579c2cbd897b868147794c9ed12aadc627c"},
