@@ -1935,7 +1935,7 @@ wrapt = ">=1.12.1,<1.13.0"
 
 [[package]]
 name = "tensorflow-addons"
-version = "0.17.1"
+version = "0.18.0"
 description = "TensorFlow Addons."
 category = "main"
 optional = false
@@ -1946,9 +1946,9 @@ packaging = "*"
 typeguard = ">=2.7"
 
 [package.extras]
-tensorflow = ["tensorflow (>=2.7.0,<2.10.0)"]
-tensorflow-cpu = ["tensorflow-cpu (>=2.7.0,<2.10.0)"]
-tensorflow-gpu = ["tensorflow-gpu (>=2.7.0,<2.10.0)"]
+tensorflow = ["tensorflow (>=2.8.0,<2.11.0)"]
+tensorflow-cpu = ["tensorflow-cpu (>=2.8.0,<2.11.0)"]
+tensorflow-gpu = ["tensorflow-gpu (>=2.8.0,<2.11.0)"]
 
 [[package]]
 name = "tensorflow-estimator"
@@ -3057,34 +3057,12 @@ py = [
     {file = "py-1.10.0.tar.gz", hash = "sha256:21b81bda15b66ef5e1a777a21c4dcd9c20ad3efd0b3f817e7a809035269e1bd3"},
 ]
 pyasn1 = [
-    {file = "pyasn1-0.4.8-py2.4.egg", hash = "sha256:fec3e9d8e36808a28efb59b489e4528c10ad0f480e57dcc32b4de5c9d8c9fdf3"},
-    {file = "pyasn1-0.4.8-py2.5.egg", hash = "sha256:0458773cfe65b153891ac249bcf1b5f8f320b7c2ce462151f8fa74de8934becf"},
-    {file = "pyasn1-0.4.8-py2.6.egg", hash = "sha256:5c9414dcfede6e441f7e8f81b43b34e834731003427e5b09e4e00e3172a10f00"},
-    {file = "pyasn1-0.4.8-py2.7.egg", hash = "sha256:6e7545f1a61025a4e58bb336952c5061697da694db1cae97b116e9c46abcf7c8"},
     {file = "pyasn1-0.4.8-py2.py3-none-any.whl", hash = "sha256:39c7e2ec30515947ff4e87fb6f456dfc6e84857d34be479c9d4a4ba4bf46aa5d"},
-    {file = "pyasn1-0.4.8-py3.1.egg", hash = "sha256:78fa6da68ed2727915c4767bb386ab32cdba863caa7dbe473eaae45f9959da86"},
-    {file = "pyasn1-0.4.8-py3.2.egg", hash = "sha256:08c3c53b75eaa48d71cf8c710312316392ed40899cb34710d092e96745a358b7"},
-    {file = "pyasn1-0.4.8-py3.3.egg", hash = "sha256:03840c999ba71680a131cfaee6fab142e1ed9bbd9c693e285cc6aca0d555e576"},
-    {file = "pyasn1-0.4.8-py3.4.egg", hash = "sha256:7ab8a544af125fb704feadb008c99a88805126fb525280b2270bb25cc1d78a12"},
-    {file = "pyasn1-0.4.8-py3.5.egg", hash = "sha256:e89bf84b5437b532b0803ba5c9a5e054d21fec423a89952a74f87fa2c9b7bce2"},
-    {file = "pyasn1-0.4.8-py3.6.egg", hash = "sha256:014c0e9976956a08139dc0712ae195324a75e142284d5f87f1a87ee1b068a359"},
-    {file = "pyasn1-0.4.8-py3.7.egg", hash = "sha256:99fcc3c8d804d1bc6d9a099921e39d827026409a58f2a720dcdb89374ea0c776"},
     {file = "pyasn1-0.4.8.tar.gz", hash = "sha256:aef77c9fb94a3ac588e87841208bdec464471d9871bd5050a287cc9a475cd0ba"},
 ]
 pyasn1-modules = [
     {file = "pyasn1-modules-0.2.8.tar.gz", hash = "sha256:905f84c712230b2c592c19470d3ca8d552de726050d1d1716282a1f6146be65e"},
-    {file = "pyasn1_modules-0.2.8-py2.4.egg", hash = "sha256:0fe1b68d1e486a1ed5473f1302bd991c1611d319bba158e98b106ff86e1d7199"},
-    {file = "pyasn1_modules-0.2.8-py2.5.egg", hash = "sha256:fe0644d9ab041506b62782e92b06b8c68cca799e1a9636ec398675459e031405"},
-    {file = "pyasn1_modules-0.2.8-py2.6.egg", hash = "sha256:a99324196732f53093a84c4369c996713eb8c89d360a496b599fb1a9c47fc3eb"},
-    {file = "pyasn1_modules-0.2.8-py2.7.egg", hash = "sha256:0845a5582f6a02bb3e1bde9ecfc4bfcae6ec3210dd270522fee602365430c3f8"},
     {file = "pyasn1_modules-0.2.8-py2.py3-none-any.whl", hash = "sha256:a50b808ffeb97cb3601dd25981f6b016cbb3d31fbf57a8b8a87428e6158d0c74"},
-    {file = "pyasn1_modules-0.2.8-py3.1.egg", hash = "sha256:f39edd8c4ecaa4556e989147ebf219227e2cd2e8a43c7e7fcb1f1c18c5fd6a3d"},
-    {file = "pyasn1_modules-0.2.8-py3.2.egg", hash = "sha256:b80486a6c77252ea3a3e9b1e360bc9cf28eaac41263d173c032581ad2f20fe45"},
-    {file = "pyasn1_modules-0.2.8-py3.3.egg", hash = "sha256:65cebbaffc913f4fe9e4808735c95ea22d7a7775646ab690518c056784bc21b4"},
-    {file = "pyasn1_modules-0.2.8-py3.4.egg", hash = "sha256:15b7c67fabc7fc240d87fb9aabf999cf82311a6d6fb2c70d00d3d0604878c811"},
-    {file = "pyasn1_modules-0.2.8-py3.5.egg", hash = "sha256:426edb7a5e8879f1ec54a1864f16b882c2837bfd06eee62f2c982315ee2473ed"},
-    {file = "pyasn1_modules-0.2.8-py3.6.egg", hash = "sha256:cbac4bc38d117f2a49aeedec4407d23e8866ea4ac27ff2cf7fb3e5b570df19e0"},
-    {file = "pyasn1_modules-0.2.8-py3.7.egg", hash = "sha256:c29a5e5cc7a3f05926aff34e097e84f8589cd790ce0ed41b67aed6857b26aafd"},
 ]
 pycodestyle = [
     {file = "pycodestyle-2.8.0-py2.py3-none-any.whl", hash = "sha256:720f8b39dde8b293825e7ff02c475f3077124006db4f440dcbc9a20b76548a20"},
@@ -3233,7 +3211,6 @@ requests = [
 requests-oauthlib = [
     {file = "requests-oauthlib-1.3.0.tar.gz", hash = "sha256:b4261601a71fd721a8bd6d7aa1cc1d6a8a93b4a9f5e96626f8e4d91e8beeaa6a"},
     {file = "requests_oauthlib-1.3.0-py2.py3-none-any.whl", hash = "sha256:7f71572defaecd16372f9006f33c2ec8c077c3cfa6f5911a9a90202beb513f3d"},
-    {file = "requests_oauthlib-1.3.0-py3.7.egg", hash = "sha256:fa6c47b933f01060936d87ae9327fead68768b69c6c9ea2109c48be30f2d4dbc"},
 ]
 restructuredtext-lint = [
     {file = "restructuredtext_lint-1.3.2.tar.gz", hash = "sha256:d3b10a1fe2ecac537e51ae6d151b223b78de9fafdd50e5eb6b08c243df173c80"},
@@ -3408,21 +3385,21 @@ tensorflow = [
     {file = "tensorflow-2.4.4-cp38-cp38-win_amd64.whl", hash = "sha256:7ef4d5f4dfd653152962a81b85c1ae8c9c3f3c83f183371448ff8b2cb8eb8bce"},
 ]
 tensorflow-addons = [
-    {file = "tensorflow_addons-0.17.1-cp310-cp310-macosx_10_15_x86_64.whl", hash = "sha256:51f4679fac03d668777634d4cd30a5fc5d72b2a58af94824a83cd37343ed90e7"},
-    {file = "tensorflow_addons-0.17.1-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:af8c1b0eade2c12c9007f24d30d75711f3313e500171a7d471c10a336e0dc68b"},
-    {file = "tensorflow_addons-0.17.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e9648b5fb937f19d015946fc6f607de525105ead78afbc7acfe9db3cf4a42ee4"},
-    {file = "tensorflow_addons-0.17.1-cp310-cp310-win_amd64.whl", hash = "sha256:2a652ff30e1bae50c5d740c340705a110ad82d4df2f729a48a7324d710e3a8ac"},
-    {file = "tensorflow_addons-0.17.1-cp37-cp37m-macosx_10_15_x86_64.whl", hash = "sha256:e526633dd5ecb64bc7f2b0b02d056723e7001a01d57f5017ec75baed838b0763"},
-    {file = "tensorflow_addons-0.17.1-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:42aa05ddd2512395de50ba8c9f6f3694e1afc6f913d040161ad758123aaf9959"},
-    {file = "tensorflow_addons-0.17.1-cp37-cp37m-win_amd64.whl", hash = "sha256:be5dd587ee9a6db5739a6e87fef4cfc1e894987666c6688985f41d1016bb5c11"},
-    {file = "tensorflow_addons-0.17.1-cp38-cp38-macosx_10_15_x86_64.whl", hash = "sha256:4b05a73e1434c53027a5dc9f8448ec1361e3fc998783e86b0286f5acc5a1872d"},
-    {file = "tensorflow_addons-0.17.1-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:17d8ed3ccf4ae47e2f2ac21a4159d2a50e065f374cb7eccd3469c8e4aa03d3c0"},
-    {file = "tensorflow_addons-0.17.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:de49693b488e4c616bf9c942c5af22f165837de85cf930f18fe8196525aa9e97"},
-    {file = "tensorflow_addons-0.17.1-cp38-cp38-win_amd64.whl", hash = "sha256:f884097d6fedb3e7d300d28dc633431303a1dbb7a6d91c442d7aef0b36a5c2c7"},
-    {file = "tensorflow_addons-0.17.1-cp39-cp39-macosx_10_15_x86_64.whl", hash = "sha256:7bb1ba28a94ed58da783e4752ffb7bd9b309bdd7d20c26a0bfaae25c7858e97a"},
-    {file = "tensorflow_addons-0.17.1-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:2265a0bf3728c8f729eef9c9524fa86d3091a6b3f85c0c23d2e26564b58d4dba"},
-    {file = "tensorflow_addons-0.17.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:8049e8687e4ff4f1db3022e00b03c655f483e983cb42b3dcc68b2d89c8788302"},
-    {file = "tensorflow_addons-0.17.1-cp39-cp39-win_amd64.whl", hash = "sha256:de36d011e79ff86413265a3656cba23d75b741bd5f6817e43674c731d059e6b8"},
+    {file = "tensorflow_addons-0.18.0-cp310-cp310-macosx_10_14_x86_64.whl", hash = "sha256:c5efa7a6261679cb4f06d127933392293b2f29ad064db793e7a775c52286a186"},
+    {file = "tensorflow_addons-0.18.0-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:9284c6ab9b5f4caa25a536d7f3e8ffdea5464b5dab4925a2afc3c8a1f57492ea"},
+    {file = "tensorflow_addons-0.18.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:9586dc70e4de67f234afc48a2bbae9a74dc6edf24d28f261bb320045b307f405"},
+    {file = "tensorflow_addons-0.18.0-cp310-cp310-win_amd64.whl", hash = "sha256:20c1b8e32f4fc93b095dfef8d86822ca25735bdaf55b9deea5f0723840879fae"},
+    {file = "tensorflow_addons-0.18.0-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:45a14fad25447b5f5e2dd0bad83b206212ecf9ca33636d8bc150de70e833d32e"},
+    {file = "tensorflow_addons-0.18.0-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:69b4bf55d05e62d818f717577c6e4e62dd7d591d4f72dbe08ce79b78a2195cda"},
+    {file = "tensorflow_addons-0.18.0-cp37-cp37m-win_amd64.whl", hash = "sha256:a2c833e0a0fb96b9851223a945b717dc431ce1af8cc44b2163d96d43afdd948a"},
+    {file = "tensorflow_addons-0.18.0-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:884988a682c317b7bb25742d65847b72fa8f684caded9726d948bd0618a2d42a"},
+    {file = "tensorflow_addons-0.18.0-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:27b0c7dba2d5d61f090ecb09144df8a2dd3d8984804fdcbfc6387c7af49ce8d6"},
+    {file = "tensorflow_addons-0.18.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:ccc504b72342eb0e08c771644eed705e0a12937304141d6a8b19da5000f28a40"},
+    {file = "tensorflow_addons-0.18.0-cp38-cp38-win_amd64.whl", hash = "sha256:9ee3e5c81652f59502958396bc3c5fd34ee27d9a44ffbcc2dceb4fd61f4b4685"},
+    {file = "tensorflow_addons-0.18.0-cp39-cp39-macosx_10_14_x86_64.whl", hash = "sha256:0713a843a3cd5444bb1620cb7941566fb12f87cb2efb4150ca3eece7d80c75e7"},
+    {file = "tensorflow_addons-0.18.0-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:0cc32b51e6fc480fee82b9db51f2b990da31a91c9adb01e799c92f47faf99e89"},
+    {file = "tensorflow_addons-0.18.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:4985b7e8cf8b80574a8fca4d712a769c8a39c944ac91883f327d2a4c607d2853"},
+    {file = "tensorflow_addons-0.18.0-cp39-cp39-win_amd64.whl", hash = "sha256:e74e2f47a7b8e2abb7fa0b48ea4837ea2636581c55f5559ecc804ec704d456bc"},
 ]
 tensorflow-estimator = [
     {file = "tensorflow_estimator-2.4.0-py2.py3-none-any.whl", hash = "sha256:5b7b7bf2debe19a8794adacc43e8ba6459daa4efaf54d3302623994a359b17f0"},
